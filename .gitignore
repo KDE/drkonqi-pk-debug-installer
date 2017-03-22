@@ -1,0 +1,8 @@
+/.vagrant
+/build
+/integrationtests/build
+
+# Random vagrant littering
+/ubuntu-xenial-16.04-cloudimg-console.log
+# QtCreator litter
+CMakeLists.txt.user

@@ -1,0 +1,6 @@
+drkonqi-pk-debug-installer (0.1) xenial; urgency=medium
+
+  * Don't run tests on account of them requiring a fully working qapt stack,
+    which is crappy to get going.
+
+ -- Harald Sitter <sitter@kde.org>  Wed, 25 Nov 2015 13:32:35 +0100
