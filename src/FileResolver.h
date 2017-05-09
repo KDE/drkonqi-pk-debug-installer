@@ -41,6 +41,7 @@ public:
 
 signals:
     void resolved(FileResolver *);
+    void failed(FileResolver *);
 
 private slots:
     void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);

@@ -38,6 +38,7 @@ signals:
 
 private slots:
     void resolved(FileResolver *resolver);
+    void failed(FileResolver *resolver);
 
 private:
     void doInstall();

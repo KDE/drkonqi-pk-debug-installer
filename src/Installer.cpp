@@ -38,6 +38,7 @@ void Installer::install()
         auto r = new FileResolver(this);
         m_resolvers << r;
         connect(r, &FileResolver::resolved, this, &Installer::resolved);
+        connect(r, &FileResolver::failed, this, &Installer::failed);
         r->resolve(file);
     }
 }
@@ -51,6 +52,12 @@ void Installer::resolved(FileResolver *resolver)
         doInstall();
     }
     resolver->deleteLater();
+}
+
+void Installer::failed(FileResolver *resolver)
+{
+    resolver->deleteLater();
+    emit done(2); // 2 = symbols not found
 }
 
 void Installer::doInstall()
