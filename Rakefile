@@ -37,6 +37,7 @@ task :unrestrict_polkit do
   puts "Unrestricting polkit's packagekit rules..."
   sh 'sudo cp -rv integrationtests/provision/*.pkla' \
      ' /etc/polkit-1/localauthority/50-local.d/'
+  sh 'sudo systemctl restart polkitd'
 end
 
 task :test do
