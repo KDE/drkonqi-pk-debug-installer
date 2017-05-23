@@ -76,7 +76,6 @@ int main(int argc, char **argv)
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-
     auto files = parser.positionalArguments();
     if (files.isEmpty()) {
         return 0;
