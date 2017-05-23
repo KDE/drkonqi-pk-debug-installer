@@ -41,4 +41,13 @@ class IntegrationTest < Minitest::Test
     assert(system(@bin, '/usr/lib/x86_64-linux-gnu/libQt5Core.so.5'))
     assert(Apt.installed?('libqt5core5a-dbgsym'))
   end
+
+  def test_plasma_workspace
+    # plasma-workspace still has a -dbg pckage. Hell if I know why.
+    # NB: may need sobumpery if the test fails.
+    assert(Apt.install('libtaskmanager6'))
+    assert(Apt.purge('plasma-workspace-dbg'))
+    assert(system(@bin, '/usr/lib/x86_64-linux-gnu/libtaskmanager.so.6'))
+    assert(Apt.installed?('plasma-workspace-dbg'))
+  end
 end

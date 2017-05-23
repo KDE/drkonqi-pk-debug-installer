@@ -21,6 +21,7 @@
 #include "FileResolver.h"
 
 #include <QDebug>
+#include <QProcess>
 
 #include <PackageKit/Daemon>
 
@@ -86,15 +87,45 @@ QStringList FileResolver::debugCandidateIDs() const
     return m_debugCandidateIDs;
 }
 
+// PackageKit does not expose the source of a package. As we need to support source-dbg for legacy
+// reasons we'll dpkg-query the source here. This is a lock-less operation so it should be fine.
+// Still shitty to have to go through dpkg-query and not simply defer to packagekit -.-
+static QString dpkgSourceName(const QString &packageID)
+{
+    auto package = PackageKit::Daemon::packageName(packageID);
+
+    const auto packageArch = PackageKit::Daemon::packageArch(packageID);
+    if (!packageArch.isEmpty()) {
+        package = package + ":" + packageArch;
+    }
+
+    QProcess proc;
+    proc.start(QStringLiteral("dpkg-query"),
+               QStringList() << QStringLiteral("-f=${Source}\n") << QStringLiteral("-W") << package);
+    qDebug() << proc.arguments();
+    proc.waitForFinished();
+
+    return QString::fromLatin1(proc.readLine()).trimmed();
+}
+
 void FileResolver::packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &)
 {
     qDebug() << this << "found" << packageID;
     m_packageID = packageID;
 
     const auto packageName = PackageKit::Daemon::packageName(packageID);
+
     QStringList debugCandidates;
     debugCandidates << packageName + "-dbgsym"
                     << packageName + "-dbg";
+
+    const auto sourceName = dpkgSourceName(packageID);
+    if (!sourceName.isEmpty()) {
+        // -dbg would be a manaual created one, so it should take preference here.
+        debugCandidates << sourceName + "-dbg"
+                        << sourceName + "-dbgsym";;
+    }
+
     qDebug() << "candidates" << debugCandidates;
 
     m_debugResolver = new DebugResolver(this);
