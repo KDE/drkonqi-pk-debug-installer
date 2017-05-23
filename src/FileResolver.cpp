@@ -135,9 +135,10 @@ void FileResolver::packageFound(PackageKit::Transaction::Info, const QString &pa
 
 void FileResolver::debugResolverFinished()
 {
-    QScopedPointer<DebugResolver> DebugResolver(m_debugResolver);
+    auto resolver = m_debugResolver;
+    m_debugResolver->deleteLater(); // Only happens once we return.
     m_debugResolver = nullptr;
-    auto candidateIDs = DebugResolver->candidateIDs();
+    auto candidateIDs = resolver->candidateIDs();
     for (auto it = candidateIDs.begin(); it != candidateIDs.end();) {
         if (!DebugPackage(*it).isCompatibleWith(m_packageID)) {
             it = candidateIDs.erase(it);
