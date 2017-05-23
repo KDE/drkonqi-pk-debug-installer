@@ -20,7 +20,7 @@ require_relative 'test_helper'
 
 class IntegrationTest < Minitest::Test
   def setup
-    @bin = "#{ENV.fetch('BUILD_DIR')}/src/pk-drkonqi-debug-installer"
+    @bin = "#{ENV.fetch('BUILD_DIR')}/src/drkonqi-pk-debug-installer"
     assert(File.exist?(@bin))
 
     # Make sure we aren't getting locked out by packagekitd. Pre-installer setups
