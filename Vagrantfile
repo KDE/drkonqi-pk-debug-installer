@@ -9,5 +9,7 @@ Vagrant.configure(2) do |config|
     sudo apt install --no-install-recommends -y ruby
     echo 'INTEGRATION_TESTING=1' >> /etc/environment
     echo 'cd /vagrant' >> /home/ubuntu/.bashrc
+    # Fuck off apt, just fuck off.
+    sudo systemctl disable apt-daily.service
   SHELL
 end
