@@ -10,7 +10,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
 
-set(REQUIRED_QT_VERSION 5.0)
+set(REQUIRED_QT_VERSION 5.7)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Test)
 find_package(KF5CoreAddons 5.0.0 REQUIRED)
 find_package(KF5I18n 5.0.0 REQUIRED)

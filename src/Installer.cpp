@@ -34,7 +34,7 @@ Installer::Installer(const QStringList &files)
 
 void Installer::install()
 {
-    for (const auto &file : m_files) {
+    for (const auto &file : qAsConst(m_files)) {
         auto r = new FileResolver(this);
         m_resolvers << r;
         connect(r, &FileResolver::resolved, this, &Installer::resolved);
@@ -69,7 +69,7 @@ void Installer::doInstall()
     qDebug() << "DO INSTALL" << m_debugPackageIDs;
     auto transaction = PackageKit::Daemon::installPackages(m_debugPackageIDs.toList());
     QObject::connect(transaction, &PackageKit::Transaction::finished,
-                     [&](PackageKit::Transaction::Exit status, uint) {
+                     this, [&](PackageKit::Transaction::Exit status, uint) {
         switch (status) {
         case PackageKit::Transaction::ExitSuccess:
             emit done(0);

@@ -51,7 +51,7 @@ void DebugResolver::transactionFinished()
     }
 }
 
-void DebugResolver::packageFound(PackageKit::Transaction::Info i, const QString &packageID, const QString &)
+void DebugResolver::packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &)
 {
     qDebug() << this << "dbgfound" << packageID << m_candidates;
     if (!m_candidates.contains(packageID)) {

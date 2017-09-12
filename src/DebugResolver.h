@@ -40,7 +40,7 @@ signals:
 
 private slots:
     void transactionFinished();
-    void packageFound(PackageKit::Transaction::Info i, const QString &packageID, const QString &/* summary */);
+    void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);
 
 private:
     QStringList m_candidates;

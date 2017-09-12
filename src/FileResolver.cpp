@@ -70,7 +70,7 @@ void FileResolver::resolve(const QString &file)
             PackageKit::Daemon::searchFiles(file, PackageKit::Transaction::FilterInstalled);
     qDebug() << transaction;
     connect(transaction, &PackageKit::Transaction::package, this, &FileResolver::packageFound);
-    connect(transaction, &PackageKit::Transaction::finished, [&]() {
+    connect(transaction, &PackageKit::Transaction::finished, this, [&]() {
         if (m_packageID.isEmpty()) {
             emit failed(this);
         }
