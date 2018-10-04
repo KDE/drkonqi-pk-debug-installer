@@ -141,6 +141,7 @@ void FileResolver::debugResolverFinished()
     auto candidateIDs = resolver->candidateIDs();
     for (auto it = candidateIDs.begin(); it != candidateIDs.end();) {
         if (!DebugPackage(*it).isCompatibleWith(m_packageID)) {
+            qDebug() << "  -- dropping incompatible candidate" << m_packageID;
             it = candidateIDs.erase(it);
         } else {
             ++it;
