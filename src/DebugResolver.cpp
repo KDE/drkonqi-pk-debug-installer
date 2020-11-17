@@ -1,5 +1,5 @@
 /*
-    Copyright © 2017 Harald Sitter <sitter@kde.org>
+    Copyright © 2017-2020 Harald Sitter <sitter@kde.org>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License as
@@ -26,6 +26,7 @@
 
 void DebugResolver::resolve(const QStringList &candidates)
 {
+    m_possibleCandidates = candidates;
     for (const auto &candidate : candidates) {
         auto *transaction =
                 PackageKit::Daemon::searchNames(candidate, PackageKit::Transaction::FilterNotInstalled);
@@ -53,6 +54,14 @@ void DebugResolver::transactionFinished()
 
 void DebugResolver::packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &)
 {
+    // searchNames matches the search string anywhere in the name so we need
+    // to further filter the list to exact matches.
+    // Otherwise foo-dbgsym will have libfoo-dbgsym as candidate even though
+    // it may be entirely unrelated to the crash.
+    const auto packageName = PackageKit::Daemon::packageName(packageID);
+    if (!m_possibleCandidates.contains(packageName)) {
+        return;
+    }
     qDebug() << this << "dbgfound" << packageID << m_candidates;
     if (!m_candidates.contains(packageID)) {
         m_candidates << packageID;

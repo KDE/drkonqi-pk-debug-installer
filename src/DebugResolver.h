@@ -1,5 +1,5 @@
 /*
-    Copyright © 2017 Harald Sitter <sitter@kde.org>
+    Copyright © 2017-2020 Harald Sitter <sitter@kde.org>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License as
@@ -43,6 +43,7 @@ private slots:
     void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);
 
 private:
+    QStringList m_possibleCandidates;
     QStringList m_candidates;
     QSet<QObject *> m_transactions;
 };
