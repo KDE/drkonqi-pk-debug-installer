@@ -1,4 +1,4 @@
-[Allow admins to fuck off]
+[Allow everything ever]
 Identity=unix-group:sudo
 Action=org.freedesktop.packagekit.*
 ResultAny=yes
