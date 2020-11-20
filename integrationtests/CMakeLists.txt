@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2017 Harald Sitter <sitter@kde.org>
+
 if(POLICY CMP0028)
   cmake_policy(SET CMP0028 OLD)
 endif()

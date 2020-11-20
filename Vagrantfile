@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2017 Harald Sitter <sitter@kde.org>
+
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/xenial64"
 
