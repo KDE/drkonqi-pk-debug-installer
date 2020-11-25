@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
 
 #include "Installer.h"
 
@@ -7,59 +7,93 @@
 #include <QDebug>
 
 #include <PackageKit/Daemon>
+#include <KLocalizedString>
 
+#include "Debug.h"
 #include "FileResolver.h"
 
 Installer::Installer(const QStringList &files)
-    : m_files(files)
 {
-}
-
-void Installer::install()
-{
-    for (const auto &file : qAsConst(m_files)) {
-        auto r = new FileResolver(this);
-        m_resolvers << r;
-        connect(r, &FileResolver::resolved, this, &Installer::resolved);
-        connect(r, &FileResolver::failed, this, &Installer::failed);
-        r->resolve(file);
+    for (const auto &file : files) {
+        m_files.push_back(std::make_shared<File>(file));
     }
 }
 
-void Installer::resolved(FileResolver *resolver)
+QList<QObject *> Installer::fileQObjects() const
 {
-    qDebug() << resolver->packageID() << resolver->debugCandidateIDs() << m_resolvers << resolver;
-    m_debugPackageIDs += resolver->debugCandidateIDs().toSet();
-    m_resolvers.remove(resolver);
-    if (m_resolvers.isEmpty()) {
-        doInstall();
+    QList<QObject *> list;
+    list.reserve(m_files.size());
+    for (const auto &file : std::as_const(m_files)) {
+        list << file.get();
     }
-    resolver->deleteLater();
+    return list;
 }
 
-void Installer::failed(FileResolver *resolver)
+void Installer::resolve()
 {
-    resolver->deleteLater();
-    emit done(2); // 2 = symbols not found
+    for (const auto &file : std::as_const(m_files)) {
+        auto resolver = new FileResolver(file, this);
+        ++m_pendingResolvers;
+        connect(resolver, &FileResolver::finished, this, [this, file] {
+            sender()->deleteLater();
+            qCDebug(INSTALLER) << "RESOLVED" << file->packageID() << file->debugPackageID() << m_pendingResolvers;
+            if (!file->debugPackageID().isEmpty() && !file->isDebugPackageInstalled()) {
+                m_debugPackageIDs << file->debugPackageID();
+            }
+            if (--m_pendingResolvers <= 0)  {
+                prepareInstall();
+            }
+        });
+        resolver->resolve();
+    }
 }
 
-void Installer::doInstall()
+void Installer::prepareInstall()
 {
+    std::sort(m_debugPackageIDs.begin(), m_debugPackageIDs.end());
+    auto last = std::unique(m_debugPackageIDs.begin(), m_debugPackageIDs.end());
+    m_debugPackageIDs.erase(last, m_debugPackageIDs.end());
+
     if (m_debugPackageIDs.isEmpty()) {
-        emit done(0);
-        return;
+        m_error = i18nc("@label", "Failed to find any suitable debug packages or they are all already installed.");
+        Q_EMIT changed();
     }
+
+    m_ready = true;
+    Q_EMIT changed();
+}
+
+void Installer::install() {
+    m_installing = true;
+    Q_EMIT changed();
+
     qDebug() << "DO INSTALL" << m_debugPackageIDs;
-    auto transaction = PackageKit::Daemon::installPackages(m_debugPackageIDs.toList());
-    QObject::connect(transaction, &PackageKit::Transaction::finished,
-                     this, [&](PackageKit::Transaction::Exit status, uint) {
+
+    auto transaction = PackageKit::Daemon::installPackages(m_debugPackageIDs);
+    connect(transaction,
+            &PackageKit::Transaction::errorCode,
+            this,
+            [&](PackageKit::Transaction::Error, const QString &details) {
+                m_error = details;
+                Q_EMIT changed();
+            });
+    connect(transaction, &PackageKit::Transaction::finished, this, [&](PackageKit::Transaction::Exit status, uint) {
+        m_installing = false;
+        m_installed = true;
+        Q_EMIT changed();
+
         switch (status) {
         case PackageKit::Transaction::ExitSuccess:
-            emit done(0);
+            for (const auto &id : std::as_const(m_debugPackageIDs)) {
+                for (const auto &file : std::as_const(m_files)) {
+                    if (id == file->debugPackageID()) {
+                        file->setDebugPackageInstalled();
+                    }
+                }
+            }
             return;
         default:
-            qDebug() << status;
-            emit done(1);
+            qCDebug(INSTALLER) << "unexpected exit status" << status;
             return;
         }
     });

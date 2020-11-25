@@ -1,39 +1,35 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
 
 #ifndef FILERESOLVER_H
 #define FILERESOLVER_H
 
 #include <QObject>
-#include <QStringList>
 
 #include <PackageKit/Transaction>
+#include <memory>
 
-class DebugResolver;
+#include "File.h"
+
+class File;
 
 class FileResolver : public QObject
 {
     Q_OBJECT
 public:
-    using QObject::QObject;
+    explicit FileResolver(std::shared_ptr<File> file, QObject *parent = nullptr);
 
-    void resolve(const QString &file);
-
-    QString packageID() const;
-    QStringList debugCandidateIDs() const;
+    void resolve();
 
 signals:
-    void resolved(FileResolver *);
-    void failed(FileResolver *);
+    void finished();
 
 private slots:
     void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);
     void debugResolverFinished();
 
 private:
-    QString m_packageID;
-    QStringList m_debugCandidateIDs;
-    DebugResolver *m_debugResolver = nullptr;
+    const std::shared_ptr<File> m_file;
 };
 
 #endif // FILERESOLVER_H

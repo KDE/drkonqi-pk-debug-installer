@@ -1,22 +1,23 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 // SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
 
-#ifndef DEBUGRESOLVER_H
-#define DEBUGRESOLVER_H
+#pragma once
 
 #include <QObject>
 #include <QSet>
 
 #include <PackageKit/Transaction>
 
+#include <memory>
+
+#include "File.h"
+
 class DebugResolver : public QObject
 {
     Q_OBJECT
 public:
-    using QObject::QObject;
-    void resolve(const QStringList &candidates);
-
-    QStringList candidateIDs() const;
+    explicit DebugResolver(std::shared_ptr<File> file, QObject *parent = nullptr);
+    void resolve();
 
 signals:
     void finished();
@@ -26,9 +27,6 @@ private slots:
     void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);
 
 private:
-    QStringList m_possibleCandidates;
-    QStringList m_candidates;
     QSet<QObject *> m_transactions;
+    const std::shared_ptr<File> m_file;
 };
-
-#endif // DEBUGRESOLVER_H

@@ -1,60 +1,46 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2010-2017 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2010-2020 Harald Sitter <sitter@kde.org>
 
 #include <QApplication>
-#include <QDebug>
+#include <QQmlApplicationEngine>
 #include <QCommandLineParser>
 #include <QUrl>
+#include <QQmlContext>
 
 #include <KAboutData>
 #include <KLocalizedString>
+#include <KDeclarative/KDeclarative>
+#include <KLocalizedContext>
 
+#include "Debug.h"
+#include "Logger.h"
 #include "Installer.h"
 #include "Version.h"
 
-// TODO: maybe inject ubuntu dbgsym sources.list so a greater pool of packges is available
-//struct Repo
-//{
-//    Repo(const QString &id, bool enabled_)
-//        : enabled(enabled_)
-//    {
-//        file = id.section(':', 0, 0);
-//        QStringList parts = id.section(':', 1).split(' ');
-//        Q_ASSERT(parts.length() >= 3 /* type uri pocket */);
-//        type = parts.takeFirst();
-//        url = QUrl(parts.takeFirst());
-//        pocket = parts.takeFirst();
-//        qualifiers = parts;
-//    }
-//
-//    QString file;
-//    QString type;
-//    QUrl url;
-//    QString pocket;
-//    QStringList qualifiers;
-//    bool enabled;
-//};
-
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-    QCoreApplication app(argc, argv);
+    Logger::instance()->install();
 
-    KAboutData aboutData("drkonqi-pk-debug-installer",
-                         i18n("Debug package installer"),
-                         version,
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+
+    // Desktop style requires QApplication not QGuiApplication.
+    QApplication app(argc, argv);
+
+    KAboutData aboutData(QStringLiteral("drkonqi-pk-debug-installer"),
+                         i18nc("@title", "Debug Symbols Helper"),
+                         QString::fromLatin1(version),
                          i18n("A debug package installer using PackageKit"),
                          KAboutLicense::LicenseKey::GPL,
-                         i18n("(C) 2010-2017 Harald Sitter"));
+                         i18n("(C) 2010-2020 Harald Sitter"));
 
     aboutData.addAuthor(i18n("Harald Sitter"),
                         QStringLiteral(),
                         QStringLiteral("sitter@kde.org"));
 
     QCommandLineParser parser;
-    parser.addHelpOption();
-    parser.addVersionOption();
-    parser.addPositionalArgument("FILES",
-                                 i18n("Files to find debug packages for"));
+    parser.addPositionalArgument(QStringLiteral("FILES"),
+                                 i18nc("command line description", "Files to find debug packages for"));
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
@@ -63,11 +49,28 @@ int main(int argc, char **argv)
     if (files.isEmpty()) {
         return 0;
     }
+    qCDebug(INSTALLER) << "files:" << files;
+
     Installer installer(files);
-    QObject::connect(&installer, &Installer::done, [&](int exitCode) { qApp->exit(exitCode); });
-    installer.install();
+    qmlRegisterSingletonInstance("org.kde.neon.debug.installer", 1, 0, "Installer", &installer);
+    qmlRegisterSingletonInstance("org.kde.neon.debug.installer", 1, 0, "Logger", Logger::instance());
+
+    KLocalizedContext i18nContext;
+    i18nContext.setTranslationDomain(QStringLiteral(TRANSLATION_DOMAIN));
+
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextObject(&i18nContext);
+
+    KDeclarative::KDeclarative::setupEngine(&engine);
+
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+        if (!obj && url == objUrl) {
+            QCoreApplication::exit(-1);
+        }
+    }, Qt::QueuedConnection);
+    engine.load(url);
 
     return app.exec();
 }
-
-#include "main.moc"

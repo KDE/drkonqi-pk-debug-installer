@@ -1,0 +1,46 @@
+// SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+// SPDX-FileCopyrightText: 2020 Harald Sitter <sitter@kde.org>
+
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15 as QQC2
+import org.kde.kirigami 2.4 as Kirigami
+import org.kde.neon.debug.installer 1.0
+
+Kirigami.ApplicationWindow {
+    id: root
+
+    // Window instances aren't Items so we need a helper to do clean state mangement.
+    // Errors are currently a one-way road. We'll not let the user recover from there to save some time developing
+    // comprehensive state resets in the c++ code.
+    // The user will ultimately still be able to repeat the install via drkonqi.
+    Item {
+        state: Installer.error === "" ? "normal" : "error"
+
+        states: [
+            State {
+                name: "normal"
+                PropertyChanges { target: pageStack; initialPage: "qrc:/MainPage.qml" }
+            },
+            State {
+                name: "error"
+                PropertyChanges { target: pageStack; initialPage: "qrc:/ErrorPage.qml" }
+            }
+        ]
+    }
+
+    // TODO: an argument could be made that a global footer would be nicer, it's also trickier as the content is
+    //  depending on the "main" page. i.e. we have different dialogboxes depending on whether
+    //  we are on the initial page or the error page. both of which are "main" pages
+
+    // footer: {
+    //     console.log("!!!!!!!!!!!!!!!!!!!")
+    //     console.log(pageStack.items[0])
+    //     console.log(pageStack.items[0].title)
+    //     console.log(pageStack.items[0].globalFooter)
+    //     pageStack.items[0].globalFooter === undefined ? null : pageStack.items[0].globalFooter
+
+    // }
+
+    Component.onCompleted: Installer.resolve()
+}

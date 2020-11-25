@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
 
 #include "FileResolver.h"
 
@@ -7,130 +7,73 @@
 #include <QProcess>
 
 #include <PackageKit/Daemon>
+#include <utility>
 
+#include "Debug.h"
 #include "DebugResolver.h"
 
-class Package
+FileResolver::FileResolver(std::shared_ptr<File> file, QObject *parent)
+    : QObject(parent)
+    , m_file(std::move(file))
 {
-public:
-    Package(const QString &id)
-        : m_id(id)
-    {}
+}
 
-    QString version() const
-    {
-        return PackageKit::Daemon::packageVersion(m_id);
-    }
-
-    QString arch() const
-    {
-        return PackageKit::Daemon::packageArch(m_id);
-    }
-
-protected:
-    QString m_id;
-};
-
-class DebugPackage : public Package
+void FileResolver::resolve()
 {
-public:
-    using Package::Package;
-
-    bool isCompatibleWith(const QString &id)
-    {
-        return isCompatibleWith(Package(id));
-    }
-
-    bool isCompatibleWith(const Package &package)
-    {
-        return version() == package.version() && arch() == package.arch();
-    }
-};
-
-void FileResolver::resolve(const QString &file)
-{
-    auto *transaction =
-            PackageKit::Daemon::searchFiles(file, PackageKit::Transaction::FilterInstalled);
-    qDebug() << transaction;
+    auto *transaction = PackageKit::Daemon::searchFiles(m_file->path(), PackageKit::Transaction::FilterInstalled);
     connect(transaction, &PackageKit::Transaction::package, this, &FileResolver::packageFound);
-    connect(transaction, &PackageKit::Transaction::finished, this, [&]() {
-        if (m_packageID.isEmpty()) {
-            emit failed(this);
+    connect(transaction, &PackageKit::Transaction::finished, this, [this]() {
+        sender()->deleteLater();
+        if (m_file->packageID().isEmpty()) {
+            // If we failed to resolve the effective package we'll still want
+            // to get cleaned up, naturally.
+            // This is kinda error handled in the Installer as well as the QML.
+            // If we failed to resolve any debug packages that is a fatal error otherwise we'll install
+            // the ones that managed to resolve by mark the broken packages in the UI as being broken.
+            m_file->setResolved();
+            Q_EMIT finished();
         }
     });
 }
 
-QString FileResolver::packageID() const
-{
-    return m_packageID;
-}
-
-QStringList FileResolver::debugCandidateIDs() const
-{
-    return m_debugCandidateIDs;
-}
-
-// PackageKit does not expose the source of a package. As we need to support source-dbg for legacy
-// reasons we'll dpkg-query the source here. This is a lock-less operation so it should be fine.
-// Still shitty to have to go through dpkg-query and not simply defer to packagekit -.-
-static QString dpkgSourceName(const QString &packageID)
-{
-    auto package = PackageKit::Daemon::packageName(packageID);
-
-    const auto packageArch = PackageKit::Daemon::packageArch(packageID);
-    if (!packageArch.isEmpty()) {
-        package = package + ":" + packageArch;
-    }
-
-    QProcess proc;
-    proc.start(QStringLiteral("dpkg-query"),
-               QStringList() << QStringLiteral("-f=${Source}\n") << QStringLiteral("-W") << package);
-    qDebug() << proc.arguments();
-    proc.waitForFinished();
-
-    return QString::fromLatin1(proc.readLine()).trimmed();
-}
-
 void FileResolver::packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &)
 {
-    qDebug() << this << "found" << packageID;
-    m_packageID = packageID;
+    qCDebug(INSTALLER) << this << "found" << packageID;
 
-    const auto packageName = PackageKit::Daemon::packageName(packageID);
+    m_file->setPackageID(packageID);
 
-    QStringList debugCandidates;
-    debugCandidates << packageName + "-dbgsym"
-                    << packageName + "-dbg";
-
-    const auto sourceName = dpkgSourceName(packageID);
-    if (!sourceName.isEmpty()) {
-        // -dbg would be a manaual created one, so it should take preference here.
-        debugCandidates << sourceName + "-dbg"
-                        << sourceName + "-dbgsym";;
+    auto package = m_file->package();
+    const auto packageArch = PackageKit::Daemon::packageArch(packageID);
+    if (!packageArch.isEmpty()) {
+        package = package + QLatin1Char(':') + packageArch;
     }
 
-    qDebug() << "candidates" << debugCandidates;
+    // Packagekit has no notion of source packages, we'll need to resolve it manually.
+    // This is legacy compatibility for the most part. These days debug symbols are generally generated for each
+    // binary. Originally manually created dbg packages were per source though, I suppose they can still appear.
+    auto proc = new QProcess(this);
+    connect(proc, &QProcess::finished, this, [this, proc](int exitCode, QProcess::ExitStatus) {
+        proc->deleteLater();
 
-    m_debugResolver = new DebugResolver(this);
-    connect(m_debugResolver, &DebugResolver::finished, this, &FileResolver::debugResolverFinished);
-    m_debugResolver->resolve(debugCandidates);
+        if (exitCode == 0) {
+            m_file->setSourcePackage(QString::fromLatin1(proc->readLine()).trimmed());
+        }
+        // else isn't a fatal problem as most (or even all) modern packages have -dbgsym packges
+        // instead of source-derived -dbg packages.
+
+        auto resolver = new DebugResolver(m_file, this);
+        connect(resolver, &DebugResolver::finished, this, &FileResolver::debugResolverFinished);
+        resolver->resolve();
+    });
+
+    proc->start(QStringLiteral("dpkg-query"),
+               QStringList() << QStringLiteral("-f=${source:Package}\n") << QStringLiteral("-W") << package);
 }
 
 void FileResolver::debugResolverFinished()
 {
-    auto resolver = m_debugResolver;
-    m_debugResolver->deleteLater(); // Only happens once we return.
-    m_debugResolver = nullptr;
-    auto candidateIDs = resolver->candidateIDs();
-    for (auto it = candidateIDs.begin(); it != candidateIDs.end();) {
-        if (!DebugPackage(*it).isCompatibleWith(m_packageID)) {
-            qDebug() << "  -- dropping incompatible candidate" << m_packageID;
-            it = candidateIDs.erase(it);
-        } else {
-            ++it;
-        }
-    }
-    qDebug() << this << "++ packages for" << m_packageID << candidateIDs;
-    m_debugCandidateIDs = candidateIDs;
-    emit resolved(this);
+    sender()->deleteLater();
+    qCDebug(INSTALLER) << this << "++ packages for" << m_file->packageID() << m_file->debugPackageID();
+    m_file->setResolved();
+    Q_EMIT finished();
 }

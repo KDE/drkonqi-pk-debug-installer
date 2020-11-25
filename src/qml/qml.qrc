@@ -1,0 +1,13 @@
+<!--
+    SPDX-License-Identifier: CC0-1.0
+    SPDX-FileCopyrightText: 2020 Harald Sitter <sitter@kde.org>
+-->
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>FilePropertyLabel.qml</file>
+        <file>ErrorPage.qml</file>
+        <file>FilePage.qml</file>
+        <file>MainPage.qml</file>
+    </qresource>
+</RCC>

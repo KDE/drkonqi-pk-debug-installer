@@ -4,6 +4,6 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-static const char version[] = "${VERSION_STRING_FULL}";
+static const char *version = "${VERSION_STRING_FULL}";
 
 #endif // VERSION_H

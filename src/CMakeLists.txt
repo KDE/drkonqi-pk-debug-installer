@@ -1,42 +1,39 @@
 # SPDX-License-Identifier: BSD-3-Clause
-# SPDX-FileCopyrightText: 2017 Harald Sitter <sitter@kde.org>
+# SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
+
+add_definitions(-DTRANSLATION_DOMAIN=\"drkonqi-pk-debug-installer\")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/Version.h)
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 set(installdbgsymbols_SRCS
     DebugResolver.cpp
     FileResolver.cpp
     Installer.cpp
+    Package.cpp
+    DebugPackage.cpp
+    Logger.cpp
+    File.cpp
 )
 
-add_executable(qmlinstaller ${installdbgsymbols_SRCS} main.new.cpp qml.qrc)
+ecm_qt_declare_logging_category(installdbgsymbols_SRCS
+    HEADER Debug.h
+    IDENTIFIER INSTALLER
+    CATEGORY_NAME "org.kde.drkonqi.pk-debug-installer"
+    DESCRIPTION "PackageKit based debug installer for drkonqi"
+)
 
-# add_executable(drkonqi-pk-debug-installer ${installdbgsymbols_SRCS} main.cpp)
-add_library(testlib STATIC  ${installdbgsymbols_SRCS})
+add_executable(drkonqi-pk-debug-installer ${installdbgsymbols_SRCS} main.cpp qml/qml.qrc)
 
-# target_link_libraries(drkonqi-pk-debug-installer
-#     Qt5::DBus
-#     Qt5::Widgets
-#     KF5::CoreAddons
-#     KF5::I18n
-#     PK::packagekitqt5)
-target_link_libraries(qmlinstaller
+target_compile_definitions(drkonqi-pk-debug-installer
+  PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+
+target_link_libraries(drkonqi-pk-debug-installer
     PRIVATE
-        Qt5::DBus
         Qt5::Widgets
         Qt5::Quick
         KF5::CoreAddons
         KF5::I18n
-        PK::packagekitqt5)
-target_link_libraries(testlib
-    Qt5::DBus
-    Qt5::Widgets
-    KF5::CoreAddons
-    KF5::I18n
-    PK::packagekitqt5)
+        PK::packagekitqt5
+        KF5::Declarative)
 
-    target_compile_definitions(qmlinstaller
-    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-
-# install(TARGETS drkonqi-pk-debug-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS drkonqi-pk-debug-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
