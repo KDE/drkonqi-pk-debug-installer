@@ -10,7 +10,7 @@ import org.kde.neon.debug.installer 1.0
 Kirigami.ApplicationWindow {
     id: root
 
-    // Window instances aren't Items so we need a helper to do clean state mangement.
+    // Window instances aren't Items so we need a helper to do clean state management.
     // Errors are currently a one-way road. We'll not let the user recover from there to save some time developing
     // comprehensive state resets in the c++ code.
     // The user will ultimately still be able to repeat the install via drkonqi.
