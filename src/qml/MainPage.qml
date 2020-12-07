@@ -10,6 +10,8 @@ import org.kde.drkonqi.debug.installer.pk 1.0
 Kirigami.ScrollablePage {
     title: i18nc("@title", "Debug Symbols Helper")
 
+    Component.onCompleted: Installer.resolve() // start resolivng data
+
     footer: QQC2.DialogButtonBox {
         QQC2.Button {
             id: installButton

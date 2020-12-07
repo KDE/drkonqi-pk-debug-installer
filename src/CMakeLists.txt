@@ -3,7 +3,7 @@
 
 add_definitions(-DTRANSLATION_DOMAIN=\"drkonqi-pk-debug-installer\")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/Version.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/BuildConfig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/BuildConfig.h)
 
 set(installdbgsymbols_SRCS
     DebugResolver.cpp
@@ -13,6 +13,7 @@ set(installdbgsymbols_SRCS
     DebugPackage.cpp
     Logger.cpp
     File.cpp
+    DebugRepoEnabler.cpp
 )
 
 ecm_qt_declare_logging_category(installdbgsymbols_SRCS
@@ -34,6 +35,8 @@ target_link_libraries(drkonqi-pk-debug-installer
         KF5::CoreAddons
         KF5::I18n
         PK::packagekitqt5
-        KF5::Declarative)
+        KF5::Declarative
+        AppStreamQt
+)
 
 install(TARGETS drkonqi-pk-debug-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )

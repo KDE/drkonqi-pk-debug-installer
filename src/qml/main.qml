@@ -15,9 +15,24 @@ Kirigami.ApplicationWindow {
     // comprehensive state resets in the c++ code.
     // The user will ultimately still be able to repeat the install via drkonqi.
     Item {
-        state: Installer.error === "" ? "normal" : "error"
+        state: {
+            if (DebugRepoEnabler.error !== "") {
+                return "error"
+            }
+            if (Installer.error !== "") {
+                return "error"
+            }
+            if (!DebugRepoEnabler.installed) {
+                return "debug-repo"
+            }
+            "normal"
+        }
 
         states: [
+            State {
+                name: "debug-repo"
+                PropertyChanges { target: pageStack; initialPage: "qrc:/DebugRepoPage.qml" }
+            },
             State {
                 name: "normal"
                 PropertyChanges { target: pageStack; initialPage: "qrc:/MainPage.qml" }
@@ -42,5 +57,5 @@ Kirigami.ApplicationWindow {
 
     // }
 
-    Component.onCompleted: Installer.resolve()
+    Component.onCompleted: DebugRepoEnabler.run()
 }

@@ -26,7 +26,8 @@ Kirigami.Page {
             }
             QQC2.Label {
                 Layout.fillWidth: true
-                text: i18nc("@info", "An error occurred during installation: %1", Installer.error)
+                text: i18nc("@info", "An error occurred during installation: %1",
+                            DebugRepoEnabler.error !== "" ? DebugRepoEnabler.error : Installer.error)
                 wrapMode: Text.Wrap
             }
         }

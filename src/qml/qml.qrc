@@ -9,5 +9,6 @@
         <file>ErrorPage.qml</file>
         <file>FilePage.qml</file>
         <file>MainPage.qml</file>
+        <file>DebugRepoPage.qml</file>
     </qresource>
 </RCC>

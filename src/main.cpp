@@ -15,7 +15,8 @@
 #include "Debug.h"
 #include "Logger.h"
 #include "Installer.h"
-#include "Version.h"
+#include "BuildConfig.h"
+#include "DebugRepoEnabler.h"
 
 int main(int argc, char *argv[])
 {
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 
     KAboutData aboutData(QStringLiteral("drkonqi-pk-debug-installer"),
                          i18nc("@title", "Debug Symbols Helper"),
-                         QString::fromLatin1(version),
+                         QString::fromLatin1(VERSION),
                          i18n("A debug package installer using PackageKit"),
                          KAboutLicense::LicenseKey::GPL,
                          i18n("(C) 2010-2020 Harald Sitter"));
@@ -51,6 +52,8 @@ int main(int argc, char *argv[])
     }
     qCDebug(INSTALLER) << "files:" << files;
 
+    DebugRepoEnabler repoEnabler;
+    qmlRegisterSingletonInstance("org.kde.drkonqi.debug.installer.pk", 1, 0, "DebugRepoEnabler", &repoEnabler);
     Installer installer(files);
     qmlRegisterSingletonInstance("org.kde.drkonqi.debug.installer.pk", 1, 0, "Installer", &installer);
     qmlRegisterSingletonInstance("org.kde.drkonqi.debug.installer.pk", 1, 0, "Logger", Logger::instance());
