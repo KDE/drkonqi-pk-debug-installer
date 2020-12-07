@@ -52,8 +52,8 @@ int main(int argc, char *argv[])
     qCDebug(INSTALLER) << "files:" << files;
 
     Installer installer(files);
-    qmlRegisterSingletonInstance("org.kde.neon.debug.installer", 1, 0, "Installer", &installer);
-    qmlRegisterSingletonInstance("org.kde.neon.debug.installer", 1, 0, "Logger", Logger::instance());
+    qmlRegisterSingletonInstance("org.kde.drkonqi.debug.installer.pk", 1, 0, "Installer", &installer);
+    qmlRegisterSingletonInstance("org.kde.drkonqi.debug.installer.pk", 1, 0, "Logger", Logger::instance());
 
     KLocalizedContext i18nContext;
     i18nContext.setTranslationDomain(QStringLiteral(TRANSLATION_DOMAIN));

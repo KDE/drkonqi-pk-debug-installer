@@ -5,7 +5,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.4 as Kirigami
-import org.kde.neon.debug.installer 1.0
+import org.kde.drkonqi.debug.installer.pk 1.0
 
 Kirigami.ScrollablePage {
     property QtObject file // File instance actually; not registered in type system
