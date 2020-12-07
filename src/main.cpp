@@ -6,6 +6,7 @@
 #include <QCommandLineParser>
 #include <QUrl>
 #include <QQmlContext>
+#include <QIcon>
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -27,6 +28,7 @@ int main(int argc, char *argv[])
 
     // Desktop style requires QApplication not QGuiApplication.
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("tools-report-bug")));
 
     KAboutData aboutData(QStringLiteral("drkonqi-pk-debug-installer"),
                          i18nc("@title", "Debug Symbols Helper"),
