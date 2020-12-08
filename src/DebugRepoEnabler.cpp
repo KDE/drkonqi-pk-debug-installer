@@ -55,7 +55,7 @@ void DebugRepoEnabler::run()
         m_components << QJsonObject
         {
             {QStringLiteral("id"), component.id()},
-            {QStringLiteral("name"), component.name().replace(QLatin1String("rangdang "), QString())},
+            {QStringLiteral("name"), component.name()},
             {QStringLiteral("summary"), component.summary()}
         };
     }
