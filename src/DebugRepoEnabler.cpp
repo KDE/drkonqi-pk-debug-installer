@@ -77,6 +77,7 @@ void DebugRepoEnabler::run()
             this,
             [this](PackageKit::Transaction::Exit status, uint runtime) {
                 Q_UNUSED(status);
+                Q_UNUSED(runtime);
                 m_busy = false;
                 Q_EMIT changed();
             });
@@ -104,8 +105,9 @@ void DebugRepoEnabler::install()
             connect(transaction,
                     &PackageKit::Transaction::finished,
                     this,
-                    [this](PackageKit::Transaction::Exit status, uint) {
+                    [this](PackageKit::Transaction::Exit status, uint runtime) {
                         Q_UNUSED(status);
+                        Q_UNUSED(runtime);
                         m_busy = false;
                         Q_EMIT changed();
                     });

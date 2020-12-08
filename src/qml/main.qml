@@ -58,7 +58,6 @@ Kirigami.ApplicationWindow {
     //     console.log(pageStack.items[0].title)
     //     console.log(pageStack.items[0].globalFooter)
     //     pageStack.items[0].globalFooter === undefined ? null : pageStack.items[0].globalFooter
-
     // }
 
     Component.onCompleted: DebugRepoEnabler.run()
