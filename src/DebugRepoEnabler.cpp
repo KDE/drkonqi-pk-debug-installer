@@ -7,10 +7,6 @@
 
 void DebugRepoEnabler::run()
 {
-    connect(this, &DebugRepoEnabler::changed, this, [this] {
-        qDebug() << "busy" << m_busy;
-    });
-
     m_busy = true;
     Q_EMIT changed();
 
@@ -85,7 +81,6 @@ void DebugRepoEnabler::run()
 
 void DebugRepoEnabler::install()
 {
-    qWarning() << "busy";
     m_busy = true;
     Q_EMIT changed();
 
