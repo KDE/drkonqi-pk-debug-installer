@@ -3,5 +3,5 @@
 
 #pragma once
 
-#define DEBUG_REPO_APPSTREAM_IDS "@DebugRepoAppStreamIDs@"
+#define DEBUG_REPO_APPSTREAM_IDS "@DEBUG_REPO_APPSTREAM_IDS@"
 #define VERSION "@VERSION_STRING_FULL@"

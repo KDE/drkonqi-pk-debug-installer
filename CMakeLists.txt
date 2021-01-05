@@ -12,7 +12,7 @@ if(NOT VERSION_STRING_FULL) # May be set by packaging; realistically we have no 
     set(VERSION_STRING_FULL ${PROJECT_VERSION})
 endif()
 
-set(DebugRepoAppStreamIDs ""
+set(DEBUG_REPO_APPSTREAM_IDS ""
     CACHE STRING
         "Semicolon separated list of appstream 'repository' component IDs describing debug repos that need adding")
 
