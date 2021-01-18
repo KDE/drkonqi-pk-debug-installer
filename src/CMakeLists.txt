@@ -19,6 +19,7 @@ set(installdbgsymbols_SRCS
 ecm_qt_declare_logging_category(installdbgsymbols_SRCS
     HEADER Debug.h
     IDENTIFIER INSTALLER
+    DEFAULT_SEVERITY Debug
     CATEGORY_NAME "org.kde.drkonqi.pk-debug-installer"
     DESCRIPTION "PackageKit based debug installer for drkonqi"
 )
