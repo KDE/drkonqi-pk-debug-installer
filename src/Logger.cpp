@@ -24,8 +24,9 @@ Q_INVOKABLE QStringList Logger::log()
 void Logger::handler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     // Record our category and the default (default is not categorized output)
-    if (strcmp(context.category, INSTALLER().categoryName()) == 0 ||
-        strcmp(context.category, "default") == 0) {
+    // But skip over random qDebugs on qml files. We aren't producing debug output from qml that is worth logging.
+    if ((strcmp(context.category, INSTALLER().categoryName()) == 0 || strcmp(context.category, "default") == 0) &&
+        !msg.contains(QLatin1String(".qml"))) {
         instance()->data << QStringLiteral("[%1] %2\n").arg(QString::fromLatin1(context.function), msg);
     }
     // Forward all calls to the default handler.
