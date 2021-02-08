@@ -34,9 +34,7 @@ Kirigami.Page {
             opacity: 0.5
 
             wrapMode: Text.WordWrap
-            text: i18nc("@label/rich", `
-<p>Additional software sources need to be enabled on this system before debug symbols can
-be reliably resolved.</p><p>This can be undone in Discover.</p>`)
+            text: i18nc("@label/rich", "<p>Additional software sources need to be enabled on this system before debug symbols can be reliably resolved.</p><p>This can be undone in Discover.</p>")
        }
 
         QQC2.ScrollView {
