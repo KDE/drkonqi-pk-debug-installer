@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-3-Clause
-# SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
+# SPDX-FileCopyrightText: 2017-2021 Harald Sitter <sitter@kde.org>
 
 add_definitions(-DTRANSLATION_DOMAIN=\"drkonqi-pk-debug-installer\")
 
@@ -14,6 +14,7 @@ set(installdbgsymbols_SRCS
     Logger.cpp
     File.cpp
     DebugRepoEnabler.cpp
+    DiagnosticResolver.cpp
 )
 
 ecm_qt_declare_logging_category(installdbgsymbols_SRCS
@@ -24,7 +25,7 @@ ecm_qt_declare_logging_category(installdbgsymbols_SRCS
     DESCRIPTION "PackageKit based debug installer for drkonqi"
 )
 
-add_executable(drkonqi-pk-debug-installer ${installdbgsymbols_SRCS} main.cpp qml/qml.qrc)
+add_executable(drkonqi-pk-debug-installer ${installdbgsymbols_SRCS} main.cpp qml/qml.qrc assets.qrc)
 
 target_compile_definitions(drkonqi-pk-debug-installer
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)

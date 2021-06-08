@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2021 Harald Sitter <sitter@kde.org>
 
 #include "FileResolver.h"
 
@@ -11,6 +11,7 @@
 
 #include "Debug.h"
 #include "DebugResolver.h"
+#include "DiagnosticResolver.h"
 
 FileResolver::FileResolver(std::shared_ptr<File> file, QObject *parent)
     : QObject(parent)
@@ -24,15 +25,29 @@ void FileResolver::resolve()
     connect(transaction, &PackageKit::Transaction::package, this, &FileResolver::packageFound);
     connect(transaction, &PackageKit::Transaction::finished, this, [this]() {
         sender()->deleteLater();
-        if (m_file->packageID().isEmpty()) {
-            // If we failed to resolve the effective package we'll still want
-            // to get cleaned up, naturally.
-            // This is kinda error handled in the Installer as well as the QML.
-            // If we failed to resolve any debug packages that is a fatal error otherwise we'll install
-            // the ones that managed to resolve by mark the broken packages in the UI as being broken.
+        if (!m_file->packageID().isEmpty()) {
+            return;
+        }
+
+        // If we failed to resolve the effective package we'll still want
+        // to get cleaned up, naturally.
+        // This is kinda error handled in the Installer as well as the QML.
+        // If we failed to resolve any debug packages that is a fatal error otherwise we'll install
+        // the ones that managed to resolve by mark the broken packages in the UI as being broken.
+        // We'll also grab some diagnostics on the way out though...
+
+        qCDebug(INSTALLER) << this << "Getting diagnostics for" << m_file->path();
+        // if we failed to resolve the file's package ID then attach diagnostic data. This is in particular to help
+        // diagnose why a given file may have failed to resolve when the user would expect it to.
+        auto resolver = new DiagnosticResolver(m_file, this);
+        connect(resolver, &DiagnosticResolver::finished, this, [resolver, this] {
+            resolver->deleteLater();
+            m_file->setDiagnosticData(resolver->data());
+
             m_file->setResolved();
             Q_EMIT finished();
-        }
+        });
+        resolver->resolve();
     });
 }
 

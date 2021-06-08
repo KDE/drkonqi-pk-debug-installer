@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2021 Harald Sitter <sitter@kde.org>
 
 #pragma once
 
@@ -21,6 +21,8 @@ class File : public QObject
     // These are packagekit ids not actual package names!
     Q_PROPERTY(QString debugPackageID READ debugPackageID NOTIFY changed)
     Q_PROPERTY(bool debugPackageInstalled READ isDebugPackageInstalled NOTIFY changed)
+    // Diagnostic data multiline string. Only set when the file couldn't be resolved.
+    Q_PROPERTY(QString diagnosticData READ diagnosticData NOTIFY changed)
     // When completely resolved
     Q_PROPERTY(bool resolved READ isResolved NOTIFY resolved)
 public:
@@ -45,6 +47,9 @@ public:
     [[nodiscard]] QString debugPackageID() const;
     void setDebugPackageIDAndStatus(const QString &debugPackageID, bool installed);
 
+    [[nodiscard]] QString diagnosticData() const;
+    void setDiagnosticData(const QString &data);
+
     [[nodiscard]] bool isResolved() const;
     void setResolved();
 
@@ -58,6 +63,7 @@ private:
     QString m_sourcePackage;
     QString m_debugPackageID;
     bool m_debugPackageInstalled = false;
+    QString m_diagnosticData;
 
     bool m_resolved = false;
 };

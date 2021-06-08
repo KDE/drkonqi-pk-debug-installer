@@ -1,0 +1,9 @@
+<!--
+    SPDX-License-Identifier: CC0-1.0
+    SPDX-FileCopyrightText: 2021 Harald Sitter <sitter@kde.org>
+-->
+<RCC>
+    <qresource prefix="/">
+        <file>Diagnostic.sh</file>
+    </qresource>
+</RCC>

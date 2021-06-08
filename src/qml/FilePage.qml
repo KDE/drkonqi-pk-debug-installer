@@ -12,38 +12,50 @@ Kirigami.ScrollablePage {
 
     title: file.path
 
-    Kirigami.FormLayout {
+    ColumnLayout {
         Layout.fillWidth: true
 
-        FilePropertyLabel {
-            Kirigami.FormData.label: i18nc("@label", "PackageKit ID:")
+        Kirigami.FormLayout {
             Layout.fillWidth: true
-            prop: file.packageID
+
+            FilePropertyLabel {
+                Kirigami.FormData.label: i18nc("@label", "PackageKit ID:")
+                Layout.fillWidth: true
+                prop: file.packageID
+            }
+
+            FilePropertyLabel {
+                Kirigami.FormData.label: i18nc("@label", "Source Package:")
+                Layout.fillWidth: true
+                prop: file.sourcePackage
+            }
+
+            FilePropertyLabel {
+                Kirigami.FormData.label: i18nc("@label", "Debug PackageKit ID:")
+                Layout.fillWidth: true
+                prop: file.debugPackageID
+            }
+
+            QQC2.Label {
+                Kirigami.FormData.label: i18nc("@label package installation status", "Status:")
+                Layout.fillWidth: true
+                visible: file.debugPackageID !== ""
+                text: file.debugPackageInstalled ?
+                    i18nc("info:status", "Debug package already installed") :
+                    i18nc("info:status", "Debug package not yet installed")
+                color: file.debugPackageInstalled ?
+                    Kirigami.Theme.positiveTextColor :
+                    Kirigami.Theme.negativeTextColor
+                wrapMode: Text.Wrap
+            }
         }
 
-        FilePropertyLabel {
-            Kirigami.FormData.label: i18nc("@label", "Source Package:")
+        QQC2.TextArea {
             Layout.fillWidth: true
-            prop: file.sourcePackage
-        }
-
-        FilePropertyLabel {
-            Kirigami.FormData.label: i18nc("@label", "Debug PackageKit ID:")
-            Layout.fillWidth: true
-            prop: file.debugPackageID
-        }
-
-        QQC2.Label {
-            Kirigami.FormData.label: i18nc("@label package installation status", "Status:")
-            Layout.fillWidth: true
-            visible: file.debugPackageID !== ""
-            text: file.debugPackageInstalled ?
-                  i18nc("info:status", "Debug package already installed") :
-                  i18nc("info:status", "Debug package not yet installed")
-            color: file.debugPackageInstalled ?
-                   Kirigami.Theme.positiveTextColor :
-                   Kirigami.Theme.negativeTextColor
-            wrapMode: Text.Wrap
+            Layout.fillHeight: true
+            visible: file.diagnosticData !== ""
+            text: file.diagnosticData
+            readOnly: true
         }
     }
 }

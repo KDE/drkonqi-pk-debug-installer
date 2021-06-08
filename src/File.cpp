@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2021 Harald Sitter <sitter@kde.org>
 
 #include "File.h"
 
@@ -66,6 +66,17 @@ void File::setDebugPackageIDAndStatus(const QString &debugPackageID, bool instal
 QString File::debugPackageID() const
 {
     return m_debugPackageID;
+}
+
+QString File::diagnosticData() const
+{
+    return m_diagnosticData;
+}
+
+void File::setDiagnosticData(const QString &data)
+{
+    m_diagnosticData = data;
+    Q_EMIT changed();
 }
 
 bool File::isDebugPackageInstalled() const
