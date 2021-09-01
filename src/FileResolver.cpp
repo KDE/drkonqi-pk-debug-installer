@@ -13,6 +13,15 @@
 #include "DebugResolver.h"
 #include "DiagnosticResolver.h"
 
+static QString usrMergedAlternative(const QString &path)
+{
+    const QString usr = QStringLiteral("/usr/");
+    if (path.startsWith(usr)) {
+        return path.mid(usr.length() - 1 /* keep trailing slash as new root */);
+    }
+    return usr.chopped(1 /* drop trailing slash, path already has one */) + path;
+}
+
 FileResolver::FileResolver(std::shared_ptr<File> file, QObject *parent)
     : QObject(parent)
     , m_file(std::move(file))
@@ -21,11 +30,31 @@ FileResolver::FileResolver(std::shared_ptr<File> file, QObject *parent)
 
 void FileResolver::resolve()
 {
-    auto *transaction = PackageKit::Daemon::searchFiles(m_file->path(), PackageKit::Transaction::FilterInstalled);
+    resolve(m_file->path());
+}
+
+void FileResolver::resolve(const QString &path)
+{
+    auto *transaction = PackageKit::Daemon::searchFiles(path, PackageKit::Transaction::FilterInstalled);
     connect(transaction, &PackageKit::Transaction::package, this, &FileResolver::packageFound);
-    connect(transaction, &PackageKit::Transaction::finished, this, [this]() {
-        sender()->deleteLater();
+    connect(transaction, &PackageKit::Transaction::finished, this, [this, path, transaction]() {
+        transaction->deleteLater();
         if (!m_file->packageID().isEmpty()) {
+            if (m_triedUsrMerge) { // update the file path with its real variant
+                m_file->setPath(path);
+            }
+            return;
+        }
+
+        if (!m_triedUsrMerge) {
+            // Retry with usr merge mangling. On a dpkg level /lib/foo.so is different from /usr/lib/foo.so but we
+            // cannot really tell which of the two it is. Neither the disk nor gdb knows. So, in the event that
+            // resolving the input path failed we'll try again with the mangled path. If that too doesn't work we
+            // are out of options.
+            m_triedUsrMerge = true;
+            const QString alternative = usrMergedAlternative(path);
+            qCDebug(INSTALLER) << this << "Retrying resolution with usr-merged path mutation" << alternative;
+            resolve(alternative);
             return;
         }
 

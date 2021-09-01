@@ -8,8 +8,8 @@
 class File : public QObject
 {
     Q_OBJECT
-    // The path of the file that is meant to get debug symbols (incoming arg).
-    Q_PROPERTY(QString path READ path CONSTANT)
+    // The path of the file that is meant to get debug symbols (incoming arg). May change because of usr-merge conversion.
+    Q_PROPERTY(QString path READ path NOTIFY changed)
     // The package the file belongs to. This is the packagekit id!
     Q_PROPERTY(QString packageID READ packageID NOTIFY changed)
     // The package the file belongs to.
@@ -33,6 +33,7 @@ public:
     [[nodiscard]] QStringList potentialDebugPackageCandidateNames() const;
 
     [[nodiscard]] QString path() const;
+    void setPath(const QString &path);
 
     [[nodiscard]] QString package() const;
     [[nodiscard]] QString packageID() const;
@@ -58,7 +59,7 @@ Q_SIGNALS:
     void resolved();
 
 private:
-    const QString m_path;
+    QString m_path;
     QString m_packageID;
     QString m_sourcePackage;
     QString m_debugPackageID;

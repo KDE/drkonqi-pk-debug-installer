@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2017-2020 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2017-2021 Harald Sitter <sitter@kde.org>
 
 #ifndef FILERESOLVER_H
 #define FILERESOLVER_H
@@ -20,6 +20,7 @@ public:
     explicit FileResolver(std::shared_ptr<File> file, QObject *parent = nullptr);
 
     void resolve();
+    void resolve(const QString &path);
 
 signals:
     void finished();
@@ -30,6 +31,7 @@ private slots:
 
 private:
     const std::shared_ptr<File> m_file;
+    bool m_triedUsrMerge = false;
 };
 
 #endif // FILERESOLVER_H

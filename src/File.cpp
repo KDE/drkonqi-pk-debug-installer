@@ -28,6 +28,15 @@ QString File::path() const
     return m_path;
 }
 
+void File::setPath(const QString &path)
+{
+    if (m_path == path) {
+        return;
+    }
+    m_path = path;
+    Q_EMIT changed();
+}
+
 QString File::packageID() const
 {
     return m_packageID;
