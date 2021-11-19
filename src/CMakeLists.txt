@@ -41,4 +41,5 @@ target_link_libraries(drkonqi-pk-debug-installer
         AppStreamQt
 )
 
-install(TARGETS drkonqi-pk-debug-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS drkonqi-pk-debug-installer ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES org.kde.drkonqi-pk-debug-installer.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})

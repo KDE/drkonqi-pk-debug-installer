@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
-// SPDX-FileCopyrightText: 2010-2020 Harald Sitter <sitter@kde.org>
+// SPDX-FileCopyrightText: 2010-2021 Harald Sitter <sitter@kde.org>
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     // Desktop style requires QApplication not QGuiApplication.
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("tools-report-bug")));
+    app.setDesktopFileName(QStringLiteral("org.kde.drkonqi-pk-debug-installer"));
 
     KAboutData aboutData(QStringLiteral("drkonqi-pk-debug-installer"),
                          i18nc("@title", "Debug Symbols Helper"),

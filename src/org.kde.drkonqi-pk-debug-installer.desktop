@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2021 Harald Sitter <sitter@kde.org>
+[Desktop Entry]
+Type=Application
+Icon=tools-report-bug
+NoDisplay=true
+Categories=Qt;KDE;System;Debugger;
+
+Name=DrKonqi Debug Symbol Installer
+GenericName=Debug Symbol Installer
+Comment=Automatically resolves and installs missing debug symbols
