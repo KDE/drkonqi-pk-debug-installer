@@ -72,6 +72,7 @@ Comment[it]=Risolve e installa automaticamente i simboli di debug mancanti
 Comment[ka]=ავტომატურად ამოხსნის და დააყენებს ნაკლულ გასამართ სიმბოლოებს
 Comment[ko]=빠진 디버그 기호를 자동으로 찾아서 설치
 Comment[nl]=Los autorisatie ontbrekende debugsymbolen op en installeer ze
+Comment[nn]=Finn og installer automatisk feilsøkingssymbol
 Comment[pl]=Sam szuka i wgrywa brakujące symbole diagnostyczne
 Comment[pt]=Resolve e instala automaticamente os símbolos de depuração em falta.
 Comment[pt_BR]=Resolve e instala automaticamente os símbolos de depuração faltantes
