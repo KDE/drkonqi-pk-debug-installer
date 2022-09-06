@@ -17,7 +17,7 @@ set(DEBUG_REPO_APPSTREAM_IDS ""
         "Semicolon separated list of appstream 'repository' component IDs describing debug repos that need adding")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
