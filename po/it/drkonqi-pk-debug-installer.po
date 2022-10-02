@@ -1,0 +1,155 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the drkonqi-pk-debug-installer package.
+# Paolo Zamponi <zapaolo@email.it>, 2020, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drkonqi-pk-debug-installer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-11-20 00:30+0000\n"
+"PO-Revision-Date: 2021-02-27 13:51+0100\n"
+"Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.12.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Paolo Zamponi"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "zapaolo@email.it"
+
+#: Installer.cpp:58
+#, kde-format
+msgctxt "@label"
+msgid ""
+"Failed to find any suitable debug packages or they are all already installed."
+msgstr ""
+"Impossibile trovare dei pacchetti di debug adatti, oppure sono già "
+"installati."
+
+#: main.cpp:35 qml/MainPage.qml:11
+#, kde-format
+msgctxt "@title"
+msgid "Debug Symbols Helper"
+msgstr "Assistente per i simboli di debug"
+
+#: main.cpp:37
+#, kde-format
+msgid "A debug package installer using PackageKit"
+msgstr "Un installatore di pacchetti di debug che utilizza PackageKit"
+
+#: main.cpp:39
+#, kde-format
+msgid "(C) 2010-2020 Harald Sitter"
+msgstr "(C) 2010-2020 Harald Sitter"
+
+#: main.cpp:41
+#, kde-format
+msgid "Harald Sitter"
+msgstr "Harald Sitter"
+
+#: main.cpp:47
+#, kde-format
+msgctxt "command line description"
+msgid "Files to find debug packages for"
+msgstr "File per cui trovare dei pacchetti di debug"
+
+#: qml/DebugRepoPage.qml:12
+msgctxt "@title"
+msgid "Debug Symbols Sources"
+msgstr "Sorgenti dei simboli di debug"
+
+#: qml/DebugRepoPage.qml:37
+msgctxt "@label/rich"
+msgid ""
+"<p>Additional software sources need to be enabled on this system before "
+"debug symbols can be reliably resolved.</p><p>This can be undone in Discover."
+"</p>"
+msgstr ""
+"<p>Devono essere abilitate delle sorgenti di software aggiuntive in questo "
+"sistema prima di poter risolvere i simboli di debug in maniera affidabile.</"
+"p><p>Questa operazione può essere annullata in Discover.</p>"
+
+#: qml/DebugRepoPage.qml:73
+msgctxt "@button"
+msgid "Add Missing Software Sources"
+msgstr "Aggiungi le sorgenti software mancanti"
+
+#: qml/ErrorPage.qml:12
+msgctxt "@title"
+msgid "Error"
+msgstr "Errore"
+
+#: qml/ErrorPage.qml:29
+msgctxt "@info"
+msgid "An error occurred during installation: %1"
+msgstr "Si è verificato un errore durante l'installazione: %1"
+
+#: qml/FilePage.qml:22
+msgctxt "@label"
+msgid "PackageKit ID:"
+msgstr "ID PackageKit:"
+
+#: qml/FilePage.qml:28
+msgctxt "@label"
+msgid "Source Package:"
+msgstr "Pacchetto sorgente:"
+
+#: qml/FilePage.qml:34
+msgctxt "@label"
+msgid "Debug PackageKit ID:"
+msgstr "ID PackageKit di debug:"
+
+#: qml/FilePage.qml:40
+msgctxt "@label package installation status"
+msgid "Status:"
+msgstr "Stato:"
+
+#: qml/FilePage.qml:44
+msgctxt "info:status"
+msgid "Debug package already installed"
+msgstr "Pacchetto di debug già installato"
+
+#: qml/FilePage.qml:45
+msgctxt "info:status"
+msgid "Debug package not yet installed"
+msgstr "Pacchetto di debug non ancora installato"
+
+#: qml/FilePropertyLabel.qml:18
+msgctxt "@info error"
+msgid "Failed to resolve data!"
+msgstr "Impossibile risolvere i dati."
+
+#: qml/FilePropertyLabel.qml:20
+msgctxt "@info place holder while waiting for actual data to load"
+msgid "..."
+msgstr "..."
+
+#: qml/main.qml:13
+msgctxt "@title:window"
+msgid "Debug Symbols Installer"
+msgstr "Installatore dei simboli di debug"
+
+#: qml/MainPage.qml:21
+msgctxt "@action:button all = debug symbols for which packages are available"
+msgid "Install All"
+msgstr "Installa tutto"
+
+#: qml/MainPage.qml:34
+msgctxt "@action:button"
+msgid "Close"
+msgstr "Chiudi"
+
+#: qml/MainPage.qml:35
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Annulla"

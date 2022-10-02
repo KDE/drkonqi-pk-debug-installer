@@ -1,0 +1,154 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the drkonqi-pk-debug-installer package.
+#
+# Burkhard Lück <lueck@hube-lueck.de>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: drkonqi-pk-debug-installer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-11-20 00:30+0000\n"
+"PO-Revision-Date: 2021-05-24 05:44+0200\n"
+"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Deutsches KDE-Übersetzerteam"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-i18n-de@kde.org"
+
+#: Installer.cpp:58
+#, kde-format
+msgctxt "@label"
+msgid ""
+"Failed to find any suitable debug packages or they are all already installed."
+msgstr ""
+"Es wurden keine passenden Debug-Pakete gefunden oder sie sind bereits "
+"installiert."
+
+#: main.cpp:35 qml/MainPage.qml:11
+#, kde-format
+msgctxt "@title"
+msgid "Debug Symbols Helper"
+msgstr "Hilfsprogramm für Debug-Symbole"
+
+#: main.cpp:37
+#, kde-format
+msgid "A debug package installer using PackageKit"
+msgstr "Ein Installationsprogramm für Debug-Pakete mit PackageKit"
+
+#: main.cpp:39
+#, kde-format
+msgid "(C) 2010-2020 Harald Sitter"
+msgstr "(C) 2010-2020 Harald Sitter"
+
+#: main.cpp:41
+#, kde-format
+msgid "Harald Sitter"
+msgstr "Harald Sitter"
+
+#: main.cpp:47
+#, kde-format
+msgctxt "command line description"
+msgid "Files to find debug packages for"
+msgstr "Dateien, für die Debug-Pakete gesucht werden"
+
+#: qml/DebugRepoPage.qml:12
+msgctxt "@title"
+msgid "Debug Symbols Sources"
+msgstr "Quellen der Debug-Symbole"
+
+#: qml/DebugRepoPage.qml:37
+msgctxt "@label/rich"
+msgid ""
+"<p>Additional software sources need to be enabled on this system before "
+"debug symbols can be reliably resolved.</p><p>This can be undone in Discover."
+"</p>"
+msgstr ""
+"<p>Zusätzliche Software-Quellen müssen auf diesem System aktiviert werden, "
+"bevor Debug-Symbole zuverlässig aufgelöst werden können.</p><p>Dies kann in "
+"Discover rückgängig gemacht werden.</p>"
+
+#: qml/DebugRepoPage.qml:73
+msgctxt "@button"
+msgid "Add Missing Software Sources"
+msgstr "Fehlende Software-Quellen hinzufügen"
+
+#: qml/ErrorPage.qml:12
+msgctxt "@title"
+msgid "Error"
+msgstr "Fehler"
+
+#: qml/ErrorPage.qml:29
+msgctxt "@info"
+msgid "An error occurred during installation: %1"
+msgstr "Bei der Installation ist ein Fehler aufgetreten: %1"
+
+#: qml/FilePage.qml:22
+msgctxt "@label"
+msgid "PackageKit ID:"
+msgstr "PackageKit-ID:"
+
+#: qml/FilePage.qml:28
+msgctxt "@label"
+msgid "Source Package:"
+msgstr "Quelltextpaket:"
+
+#: qml/FilePage.qml:34
+msgctxt "@label"
+msgid "Debug PackageKit ID:"
+msgstr "Debug-PackageKit-ID:"
+
+#: qml/FilePage.qml:40
+msgctxt "@label package installation status"
+msgid "Status:"
+msgstr "Status:"
+
+#: qml/FilePage.qml:44
+msgctxt "info:status"
+msgid "Debug package already installed"
+msgstr "Das Debug-Paket ist bereits installiert"
+
+#: qml/FilePage.qml:45
+msgctxt "info:status"
+msgid "Debug package not yet installed"
+msgstr "Das Debug-Paket ist noch nicht installiert"
+
+#: qml/FilePropertyLabel.qml:18
+msgctxt "@info error"
+msgid "Failed to resolve data!"
+msgstr "Daten konnten nicht aufgelöst werden."
+
+#: qml/FilePropertyLabel.qml:20
+msgctxt "@info place holder while waiting for actual data to load"
+msgid "..."
+msgstr "..."
+
+#: qml/main.qml:13
+msgctxt "@title:window"
+msgid "Debug Symbols Installer"
+msgstr "Installationsprogramm für Debug-Symbole"
+
+#: qml/MainPage.qml:21
+msgctxt "@action:button all = debug symbols for which packages are available"
+msgid "Install All"
+msgstr "Alle Installieren"
+
+#: qml/MainPage.qml:34
+msgctxt "@action:button"
+msgid "Close"
+msgstr "Schließen"
+
+#: qml/MainPage.qml:35
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Abbrechen"

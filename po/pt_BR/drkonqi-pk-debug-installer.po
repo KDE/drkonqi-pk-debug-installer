@@ -1,0 +1,156 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the drkonqi-pk-debug-installer package.
+#
+# Thiago Masato Costa Sueto <herzenschein@gmail.com>, 2021.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: drkonqi-pk-debug-installer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-11-20 00:30+0000\n"
+"PO-Revision-Date: 2021-02-12 14:35-0300\n"
+"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 20.04.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Thiago Masato Costa Sueto"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "herzenschein@gmail.com"
+
+#: Installer.cpp:58
+#, kde-format
+msgctxt "@label"
+msgid ""
+"Failed to find any suitable debug packages or they are all already installed."
+msgstr ""
+"Não foi possível localizar pacotes de depuração adequados ou eles já estão "
+"instalados."
+
+#: main.cpp:35 qml/MainPage.qml:11
+#, kde-format
+msgctxt "@title"
+msgid "Debug Symbols Helper"
+msgstr "Assistente de símbolos de depuração"
+
+#: main.cpp:37
+#, kde-format
+msgid "A debug package installer using PackageKit"
+msgstr "Um instalador de pacotes de depuração usando o PackageKit"
+
+#: main.cpp:39
+#, kde-format
+msgid "(C) 2010-2020 Harald Sitter"
+msgstr "(C) 2010-2020 Harald Sitter"
+
+#: main.cpp:41
+#, kde-format
+msgid "Harald Sitter"
+msgstr "Harald Sitter"
+
+#: main.cpp:47
+#, kde-format
+msgctxt "command line description"
+msgid "Files to find debug packages for"
+msgstr "Arquivos exigindo pacotes de depuração"
+
+#: qml/DebugRepoPage.qml:12
+msgctxt "@title"
+msgid "Debug Symbols Sources"
+msgstr "Fontes de símbolos de depuração"
+
+#: qml/DebugRepoPage.qml:37
+msgctxt "@label/rich"
+msgid ""
+"<p>Additional software sources need to be enabled on this system before "
+"debug symbols can be reliably resolved.</p><p>This can be undone in Discover."
+"</p>"
+msgstr ""
+"<p>Fontes de software adicionais precisam ser habilitadas neste sistema "
+"antes que os símbolos de depuração possam ser resolvidos de forma confiável."
+"</p><p>Isto pode ser desfeito no Discover.</p>"
+
+#: qml/DebugRepoPage.qml:73
+msgctxt "@button"
+msgid "Add Missing Software Sources"
+msgstr "Adicionar fontes de software faltando"
+
+#: qml/ErrorPage.qml:12
+msgctxt "@title"
+msgid "Error"
+msgstr "Erro"
+
+#: qml/ErrorPage.qml:29
+msgctxt "@info"
+msgid "An error occurred during installation: %1"
+msgstr "Um erro ocorreu durante a instalação: %1"
+
+#: qml/FilePage.qml:22
+msgctxt "@label"
+msgid "PackageKit ID:"
+msgstr "ID do PackageKit:"
+
+#: qml/FilePage.qml:28
+msgctxt "@label"
+msgid "Source Package:"
+msgstr "Pacote fonte:"
+
+#: qml/FilePage.qml:34
+msgctxt "@label"
+msgid "Debug PackageKit ID:"
+msgstr "ID de depuração do PackageKit:"
+
+#: qml/FilePage.qml:40
+msgctxt "@label package installation status"
+msgid "Status:"
+msgstr "Status:"
+
+#: qml/FilePage.qml:44
+msgctxt "info:status"
+msgid "Debug package already installed"
+msgstr "Pacote de depuração já instalado"
+
+#: qml/FilePage.qml:45
+msgctxt "info:status"
+msgid "Debug package not yet installed"
+msgstr "Pacote de depuração ainda não instalado"
+
+#: qml/FilePropertyLabel.qml:18
+msgctxt "@info error"
+msgid "Failed to resolve data!"
+msgstr "Não foi possível resolver os dados!"
+
+#: qml/FilePropertyLabel.qml:20
+msgctxt "@info place holder while waiting for actual data to load"
+msgid "..."
+msgstr "..."
+
+#: qml/main.qml:13
+msgctxt "@title:window"
+msgid "Debug Symbols Installer"
+msgstr "Instaçador de símbolos de depuração"
+
+#: qml/MainPage.qml:21
+msgctxt "@action:button all = debug symbols for which packages are available"
+msgid "Install All"
+msgstr "Instalar tudo"
+
+#: qml/MainPage.qml:34
+msgctxt "@action:button"
+msgid "Close"
+msgstr "Fechar"
+
+#: qml/MainPage.qml:35
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Cancelar"

@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-11-20 00:30+0000\n"
+"PO-Revision-Date: 2022-09-20 01:57\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/drkonqi-pk-debug-installer/drkonqi-pk-"
+"debug-installer.pot\n"
+"X-Crowdin-File-ID: 25064\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE 中国, DuckSoft, Guo Yunhe, liushuyu, Tyson Tan"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"kde-china@kde.org, ducksoft@kde.org, i@guoyunhe.me, liushuyu@kde.org, "
+"tysontan@tysontan.com"
+
+#: Installer.cpp:58
+#, kde-format
+msgctxt "@label"
+msgid ""
+"Failed to find any suitable debug packages or they are all already installed."
+msgstr "找不到合适的调试包，或者这些调试包已经全部安装。"
+
+#: main.cpp:35 qml/MainPage.qml:11
+#, kde-format
+msgctxt "@title"
+msgid "Debug Symbols Helper"
+msgstr "调试符号包安装助手"
+
+#: main.cpp:37
+#, kde-format
+msgid "A debug package installer using PackageKit"
+msgstr "基于 PackageKit 的调试符号包安装工具"
+
+#: main.cpp:39
+#, kde-format
+msgid "(C) 2010-2020 Harald Sitter"
+msgstr "(C) 2010-2020 Harald Sitter"
+
+#: main.cpp:41
+#, kde-format
+msgid "Harald Sitter"
+msgstr "Harald Sitter"
+
+#: main.cpp:47
+#, kde-format
+msgctxt "command line description"
+msgid "Files to find debug packages for"
+msgstr "要查找调试包的文件"
+
+#: qml/DebugRepoPage.qml:12
+msgctxt "@title"
+msgid "Debug Symbols Sources"
+msgstr "调试符号包来源"
+
+#: qml/DebugRepoPage.qml:37
+msgctxt "@label/rich"
+msgid ""
+"<p>Additional software sources need to be enabled on this system before "
+"debug symbols can be reliably resolved.</p><p>This can be undone in Discover."
+"</p>"
+msgstr ""
+"<p>需要在此系统上启用其他软件来源才能可靠地解析调试符号包。</p><p>此操作可在 "
+"Discover 中撤消。</p>"
+
+#: qml/DebugRepoPage.qml:73
+msgctxt "@button"
+msgid "Add Missing Software Sources"
+msgstr "添加缺少的软件来源"
+
+#: qml/ErrorPage.qml:12
+msgctxt "@title"
+msgid "Error"
+msgstr "错误"
+
+#: qml/ErrorPage.qml:29
+msgctxt "@info"
+msgid "An error occurred during installation: %1"
+msgstr "安装过程发生错误：%1"
+
+#: qml/FilePage.qml:22
+msgctxt "@label"
+msgid "PackageKit ID:"
+msgstr "PackageKit ID:"
+
+#: qml/FilePage.qml:28
+msgctxt "@label"
+msgid "Source Package:"
+msgstr "源代码包："
+
+#: qml/FilePage.qml:34
+msgctxt "@label"
+msgid "Debug PackageKit ID:"
+msgstr "调试 PackageKit ID："
+
+#: qml/FilePage.qml:40
+msgctxt "@label package installation status"
+msgid "Status:"
+msgstr "状态："
+
+#: qml/FilePage.qml:44
+msgctxt "info:status"
+msgid "Debug package already installed"
+msgstr "调试符号包已安装"
+
+#: qml/FilePage.qml:45
+msgctxt "info:status"
+msgid "Debug package not yet installed"
+msgstr "调试符号包尚未安装"
+
+#: qml/FilePropertyLabel.qml:18
+msgctxt "@info error"
+msgid "Failed to resolve data!"
+msgstr "无法解析数据！"
+
+#: qml/FilePropertyLabel.qml:20
+msgctxt "@info place holder while waiting for actual data to load"
+msgid "..."
+msgstr "..."
+
+#: qml/main.qml:13
+msgctxt "@title:window"
+msgid "Debug Symbols Installer"
+msgstr "调试符号包安装程序"
+
+#: qml/MainPage.qml:21
+msgctxt "@action:button all = debug symbols for which packages are available"
+msgid "Install All"
+msgstr "全部安装"
+
+#: qml/MainPage.qml:34
+msgctxt "@action:button"
+msgid "Close"
+msgstr "关闭"
+
+#: qml/MainPage.qml:35
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "取消"

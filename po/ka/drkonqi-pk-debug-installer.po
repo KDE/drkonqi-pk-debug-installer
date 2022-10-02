@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the drkonqi-pk-debug-installer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drkonqi-pk-debug-installer\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-11-20 00:30+0000\n"
+"PO-Revision-Date: 2022-09-15 08:39+0200\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Temuri Doghonadze"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Temuri.doghonadze@gmail.com"
+
+#: Installer.cpp:58
+#, kde-format
+msgctxt "@label"
+msgid ""
+"Failed to find any suitable debug packages or they are all already installed."
+msgstr "შესაწტყვისი გამართვის პაკეტი არ არსებობს ან უკვე დაყენებულია."
+
+#: main.cpp:35 qml/MainPage.qml:11
+#, kde-format
+msgctxt "@title"
+msgid "Debug Symbols Helper"
+msgstr "გამართვის სიმბოლოების დამხმარე"
+
+#: main.cpp:37
+#, kde-format
+msgid "A debug package installer using PackageKit"
+msgstr "გამართვის სიმბოლოების დაყენება PackageKit-ით"
+
+#: main.cpp:39
+#, kde-format
+msgid "(C) 2010-2020 Harald Sitter"
+msgstr "2010-2020 Harald Sitter, ყველა უფლება დაცულია"
+
+#: main.cpp:41
+#, kde-format
+msgid "Harald Sitter"
+msgstr "Harald Sitter"
+
+#: main.cpp:47
+#, kde-format
+msgctxt "command line description"
+msgid "Files to find debug packages for"
+msgstr "ფაილები, რომლისთვისაც საჭიროა გამართვის პაკეტების მოძებნა"
+
+#: qml/DebugRepoPage.qml:12
+msgctxt "@title"
+msgid "Debug Symbols Sources"
+msgstr "გამართვის სიმბოლოების წყარო"
+
+#: qml/DebugRepoPage.qml:37
+msgctxt "@label/rich"
+msgid ""
+"<p>Additional software sources need to be enabled on this system before "
+"debug symbols can be reliably resolved.</p><p>This can be undone in Discover."
+"</p>"
+msgstr ""
+"<p>გამართვის სიმბოლოების საიმედოდ ამოსახსნელად ამ სისტემაზე პროგრამების "
+"დამატებითი წყაროების ჩართვაა საჭირო.</p><p>გაუქმება Discover-ში შეგიძლიათ.</"
+"p>"
+
+#: qml/DebugRepoPage.qml:73
+msgctxt "@button"
+msgid "Add Missing Software Sources"
+msgstr "ნაკლული პროგრამების წყაროს დამატება"
+
+#: qml/ErrorPage.qml:12
+msgctxt "@title"
+msgid "Error"
+msgstr "შედომა"
+
+#: qml/ErrorPage.qml:29
+msgctxt "@info"
+msgid "An error occurred during installation: %1"
+msgstr "შეცდომა დაყენებისას: %1"
+
+#: qml/FilePage.qml:22
+msgctxt "@label"
+msgid "PackageKit ID:"
+msgstr "PackageKit-ის ID:"
+
+#: qml/FilePage.qml:28
+msgctxt "@label"
+msgid "Source Package:"
+msgstr "წყაროს პაკეტი:"
+
+#: qml/FilePage.qml:34
+msgctxt "@label"
+msgid "Debug PackageKit ID:"
+msgstr "PackageKit-ის გასამართი ID:"
+
+#: qml/FilePage.qml:40
+msgctxt "@label package installation status"
+msgid "Status:"
+msgstr "მდგომარეობა:"
+
+#: qml/FilePage.qml:44
+msgctxt "info:status"
+msgid "Debug package already installed"
+msgstr "გამართვის პაკეტი უკვე დაყენებულია"
+
+#: qml/FilePage.qml:45
+msgctxt "info:status"
+msgid "Debug package not yet installed"
+msgstr "გამართვის პაკეტი ჯერ დაყენებული არაა"
+
+#: qml/FilePropertyLabel.qml:18
+msgctxt "@info error"
+msgid "Failed to resolve data!"
+msgstr "მონაცემების ამოხსნის შეცდომა!"
+
+#: qml/FilePropertyLabel.qml:20
+msgctxt "@info place holder while waiting for actual data to load"
+msgid "..."
+msgstr "..."
+
+#: qml/main.qml:13
+msgctxt "@title:window"
+msgid "Debug Symbols Installer"
+msgstr "გამართვის სიმბოლოების დამყენებელი"
+
+#: qml/MainPage.qml:21
+msgctxt "@action:button all = debug symbols for which packages are available"
+msgid "Install All"
+msgstr "ყველას დაყენება"
+
+#: qml/MainPage.qml:34
+msgctxt "@action:button"
+msgid "Close"
+msgstr "დახურვა"
+
+#: qml/MainPage.qml:35
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "გაუქმება"
