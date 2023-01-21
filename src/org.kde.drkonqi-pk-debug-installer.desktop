@@ -4,6 +4,7 @@
 Type=Application
 Icon=tools-report-bug
 NoDisplay=true
+Exec=drkonqi-pk-debug-installer
 Categories=Qt;KDE;System;Debugger;
 
 Name=DrKonqi Debug Symbol Installer
