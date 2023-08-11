@@ -55,6 +55,8 @@ int main(int argc, char *argv[])
     }
     qCDebug(INSTALLER) << "files:" << files;
 
+    PackageKit::Daemon::setHints(PackageKit::Daemon::hints() + QStringList{QStringLiteral("interactive=true")});
+
     DebugRepoEnabler repoEnabler;
     qmlRegisterSingletonInstance("org.kde.drkonqi.debug.installer.pk", 1, 0, "DebugRepoEnabler", &repoEnabler);
     Installer installer(files);
