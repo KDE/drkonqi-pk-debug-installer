@@ -4,6 +4,7 @@
 #include "DebugRepoEnabler.h"
 
 #include "BuildConfig.h"
+#include "Debug.h"
 
 void DebugRepoEnabler::run()
 {
@@ -20,6 +21,7 @@ void DebugRepoEnabler::run()
 
     const QString idsString = QString::fromLatin1(DEBUG_REPO_APPSTREAM_IDS);
     if (idsString.isEmpty()) {
+        qCDebug(INSTALLER) << "Skipping DebugRepoEnabler because DEBUG_REPO_APPSTREAM_IDS is empty";
         m_busy = false;
         m_installed = true;
         Q_EMIT changed();
