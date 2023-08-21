@@ -39,6 +39,7 @@ void DebugRepoEnabler::run()
 
         Q_ASSERT(components.count() == 1); // ensure distros use valid ids
         const auto &component = matchedComponents.at(0);
+        Q_ASSERT(component.isValid()); // we've seen crash reports that indicated invalid components, unclear why. verify them for now.
         qWarning() << component.toString();
         qWarning() << component.packageNames();
         Q_ASSERT(component.kind() == AppStream::Component::KindRepository);
