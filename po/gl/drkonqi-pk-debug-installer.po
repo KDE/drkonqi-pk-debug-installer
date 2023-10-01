@@ -33,7 +33,8 @@ msgctxt "@label"
 msgid ""
 "Failed to find any suitable debug packages or they are all already installed."
 msgstr ""
-"Non se puido atopar paquetes de depuración axeitados ou xa están instalados."
+"Non foi posíbel atopar paquetes de depuración axeitados ou xa están "
+"instalados."
 
 #: main.cpp:35 qml/MainPage.qml:11
 #, kde-format
@@ -126,7 +127,7 @@ msgstr "O paquete de depuración aínda non está instalado"
 #: qml/FilePropertyLabel.qml:18
 msgctxt "@info error"
 msgid "Failed to resolve data!"
-msgstr "Non se puideron analizar os datos"
+msgstr "Non foi posíbel analizar os datos"
 
 #: qml/FilePropertyLabel.qml:20
 msgctxt "@info place holder while waiting for actual data to load"
