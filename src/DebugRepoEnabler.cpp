@@ -35,10 +35,10 @@ void DebugRepoEnabler::run()
     QList<AppStream::Component> components;
     for (const auto &id : ids) {
         const auto matchedComponents = pool.componentsById(id);
-        components += matchedComponents;
+        components += matchedComponents.toList();
 
         Q_ASSERT(components.count() == 1); // ensure distros use valid ids
-        const auto &component = matchedComponents.at(0);
+        const auto &component = matchedComponents.toList().at(0);
         Q_ASSERT(component.isValid()); // we've seen crash reports that indicated invalid components, unclear why. verify them for now.
         qWarning() << component.toString();
         qWarning() << component.packageNames();
