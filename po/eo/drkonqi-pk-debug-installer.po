@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:39+0000\n"
-"PO-Revision-Date: 2024-02-26 21:30+0100\n"
+"PO-Revision-Date: 2024-03-24 10:34+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo.org>\n"
 "Language: eo\n"
@@ -39,17 +39,17 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
-msgstr ""
+msgstr "Sencimiga Simboloj Helpilo"
 
 #: main.cpp:37
 #, kde-format
 msgid "A debug package installer using PackageKit"
-msgstr ""
+msgstr "Sencimiga pakinstalilo uzante PackageKit"
 
 #: main.cpp:39
 #, kde-format
 msgid "(C) 2010-2020 Harald Sitter"
-msgstr ""
+msgstr "(C) 2010-2020 Harald Sitter"
 
 #: main.cpp:41
 #, kde-format
@@ -60,12 +60,12 @@ msgstr "Harald Sitter"
 #, kde-format
 msgctxt "command line description"
 msgid "Files to find debug packages for"
-msgstr ""
+msgstr "Dosieroj por trovi sencimigajn pakaĵojn"
 
 #: qml/DebugRepoPage.qml:12
 msgctxt "@title"
 msgid "Debug Symbols Sources"
-msgstr ""
+msgstr "Sencimigaj Simboloj Fontoj"
 
 #: qml/DebugRepoPage.qml:37
 msgctxt "@label/rich"
@@ -78,7 +78,7 @@ msgstr ""
 #: qml/DebugRepoPage.qml:73
 msgctxt "@button"
 msgid "Add Missing Software Sources"
-msgstr ""
+msgstr "Aldoni Mankantajn Programarfontojn"
 
 #: qml/ErrorPage.qml:12
 msgctxt "@title"
@@ -88,22 +88,22 @@ msgstr "Eraro"
 #: qml/ErrorPage.qml:29
 msgctxt "@info"
 msgid "An error occurred during installation: %1"
-msgstr ""
+msgstr "Eraro okazis dum instalado: %1"
 
 #: qml/FilePage.qml:22
 msgctxt "@label"
 msgid "PackageKit ID:"
-msgstr ""
+msgstr "ID de PackageKit:"
 
 #: qml/FilePage.qml:28
 msgctxt "@label"
 msgid "Source Package:"
-msgstr ""
+msgstr "Fonta Pako:"
 
 #: qml/FilePage.qml:34
 msgctxt "@label"
 msgid "Debug PackageKit ID:"
-msgstr ""
+msgstr "Sencimigi PackageKit-ID:"
 
 #: qml/FilePage.qml:40
 msgctxt "@label package installation status"
@@ -113,17 +113,17 @@ msgstr "Statuso:"
 #: qml/FilePage.qml:44
 msgctxt "info:status"
 msgid "Debug package already installed"
-msgstr ""
+msgstr "Sencimiga pako jam instalita"
 
 #: qml/FilePage.qml:45
 msgctxt "info:status"
 msgid "Debug package not yet installed"
-msgstr ""
+msgstr "Sencimiga pako ankoraŭ ne instalita"
 
 #: qml/FilePropertyLabel.qml:18
 msgctxt "@info error"
 msgid "Failed to resolve data!"
-msgstr ""
+msgstr "Malsukcesis solvi datumojn!"
 
 #: qml/FilePropertyLabel.qml:20
 msgctxt "@info place holder while waiting for actual data to load"
@@ -133,12 +133,12 @@ msgstr "..."
 #: qml/main.qml:13
 msgctxt "@title:window"
 msgid "Debug Symbols Installer"
-msgstr ""
+msgstr "Sencimiga Simboloj Instalilo"
 
 #: qml/MainPage.qml:21
 msgctxt "@action:button all = debug symbols for which packages are available"
 msgid "Install All"
-msgstr ""
+msgstr "Instali Ĉion"
 
 #: qml/MainPage.qml:34
 msgctxt "@action:button"
