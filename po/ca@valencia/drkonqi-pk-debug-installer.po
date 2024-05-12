@@ -135,7 +135,7 @@ msgstr "No s'ha pogut resoldre les dades!"
 #: qml/FilePropertyLabel.qml:20
 msgctxt "@info place holder while waiting for actual data to load"
 msgid "..."
-msgstr "..."
+msgstr "…"
 
 #: qml/main.qml:13
 msgctxt "@title:window"
