@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <AppStreamQt/pool.h>
+#include <AppStreamQt5/pool.h>
 #include <PackageKit/Daemon>
 #include <QJsonObject>
 #include <QVector>
