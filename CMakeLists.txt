@@ -37,7 +37,7 @@ find_package(KF5CoreAddons ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5Declarative ${KF5_MIN_VERSION} REQUIRED)
 find_package(PackageKitQt5 REQUIRED)
-find_package(AppStreamQt 1.0.2 REQUIRED)
+find_package(AppStreamQt5 1.0.2 REQUIRED)
 
 # Disable legacy stuff to get rid of some deprecation warnings.
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
