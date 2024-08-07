@@ -18,7 +18,7 @@ public:
 
     [[nodiscard]] QString data() const;
 
-signals:
+Q_SIGNALS:
     void finished();
 
 private:

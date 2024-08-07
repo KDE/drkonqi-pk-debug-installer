@@ -22,10 +22,10 @@ public:
     void resolve();
     void resolve(const QString &path);
 
-signals:
+Q_SIGNALS:
     void finished();
 
-private slots:
+private Q_SLOTS:
     void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);
     void debugResolverFinished();
 
