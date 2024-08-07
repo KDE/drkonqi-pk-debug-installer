@@ -19,7 +19,7 @@ Kirigami.ScrollablePage {
             action: Kirigami.Action {
                 text: i18nc("@action:button all = debug symbols for which packages are available",
                             "Install All")
-                iconName: "run-install"
+                icon.name: "run-install"
                 onTriggered: {
                     Installer.install()
                     installButton.visible = false
@@ -43,10 +43,10 @@ Kirigami.ScrollablePage {
         id: view
         model: Installer.files
         currentIndex: -1 // don't select anything by default
-        delegate: Kirigami.AbstractListItem {
+        delegate: QQC2.ItemDelegate {
             id: listItem
-            // TODO do we need this?
-            // width: parent ? parent.width : implicitWidth
+
+            width: ListView.view.width
 
             contentItem: RowLayout {
                 QQC2.Label {

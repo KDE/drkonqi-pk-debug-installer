@@ -30,7 +30,7 @@ public:
 
     [[nodiscard]] QList<QObject *> fileQObjects() const;
 
-signals:
+Q_SIGNALS:
     void changed();
 
 private:

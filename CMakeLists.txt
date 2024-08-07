@@ -3,8 +3,8 @@
 
 cmake_minimum_required(VERSION 3.16.3)
 
-set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.75")
+set(QT_MIN_VERSION "6.7.0")
+set(KF5_MIN_VERSION "6.4.0")
 
 project(drkonqi-pk-debug-installer)
 set(PROJECT_VERSION "1.0")
@@ -32,12 +32,12 @@ include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(ECMQtDeclareLoggingCategory)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Widgets DBus Test Quick)
-find_package(KF5CoreAddons ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Declarative ${KF5_MIN_VERSION} REQUIRED)
-find_package(PackageKitQt5 REQUIRED)
-find_package(AppStreamQt5 1.0.2 REQUIRED)
+find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Widgets DBus Test Quick)
+find_package(KF6CoreAddons ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF6I18n ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF6Declarative ${KF5_MIN_VERSION} REQUIRED)
+find_package(PackageKitQt6 REQUIRED)
+find_package(AppStreamQt 1.0.2 REQUIRED)
 
 # Disable legacy stuff to get rid of some deprecation warnings.
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)

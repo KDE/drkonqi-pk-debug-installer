@@ -57,9 +57,11 @@ Kirigami.Page {
                 interactive: false
                 model: DebugRepoEnabler.components
 
-                delegate: Kirigami.BasicListItem {
+                delegate: Kirigami.SubtitleDelegate {
+                    width: ListView.view.width
+
                     hoverEnabled: ListView.interactive
-                    label: modelData.name
+                    text: modelData.name
                     subtitle: modelData.summary
                 }
             }
@@ -69,7 +71,7 @@ Kirigami.Page {
             id: installButton
             Layout.alignment: Qt.AlignHCenter
             action: Kirigami.Action {
-                iconName: "install"
+                icon.name: "install"
                 text: i18nc("@button", "Add Missing Software Sources")
                 onTriggered: DebugRepoEnabler.install()
             }

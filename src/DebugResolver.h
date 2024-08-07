@@ -19,10 +19,10 @@ public:
     explicit DebugResolver(std::shared_ptr<File> file, QObject *parent = nullptr);
     void resolve();
 
-signals:
+Q_SIGNALS:
     void finished();
 
-private slots:
+private Q_SLOTS:
     void transactionFinished();
     void packageFound(PackageKit::Transaction::Info, const QString &packageID, const QString &/* summary */);
 

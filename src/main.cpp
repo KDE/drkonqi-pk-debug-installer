@@ -10,7 +10,7 @@
 
 #include <KAboutData>
 #include <KLocalizedString>
-#include <KDeclarative/KDeclarative>
+// #include <KDeclarative/KDeclarative>
 #include <KLocalizedContext>
 
 #include "Debug.h"
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(&i18nContext);
 
-    KDeclarative::KDeclarative::setupEngine(&engine);
+    // KDeclarative::KDeclarative::setupEngine(&engine);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
