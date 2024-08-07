@@ -32,12 +32,11 @@ target_compile_definitions(drkonqi-pk-debug-installer
 
 target_link_libraries(drkonqi-pk-debug-installer
     PRIVATE
-        Qt5::Widgets
-        Qt5::Quick
-        KF5::CoreAddons
-        KF5::I18n
-        PK::packagekitqt5
-        KF5::Declarative
+        Qt6::Widgets
+        Qt6::Quick
+        KF6::CoreAddons
+        KF6::I18n
+        PK::packagekitqt6
         AppStreamQt
 )
 

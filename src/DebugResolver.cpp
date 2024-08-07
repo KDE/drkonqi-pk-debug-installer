@@ -36,7 +36,7 @@ void DebugResolver::transactionFinished()
 {
     m_transactions.remove(sender());
     if (m_transactions.isEmpty()) {
-        emit finished();
+        Q_EMIT finished();
     }
 }
 
