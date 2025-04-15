@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:39+0000\n"
+"POT-Creation-Date: 2025-04-15 01:56+0000\n"
 "PO-Revision-Date: 2021-02-12 14:35-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -37,28 +37,28 @@ msgstr ""
 "Não foi possível localizar pacotes de depuração adequados ou eles já estão "
 "instalados."
 
-#: main.cpp:35 qml/MainPage.qml:11
+#: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
 msgstr "Assistente de símbolos de depuração"
 
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid "A debug package installer using PackageKit"
 msgstr "Um instalador de pacotes de depuração usando o PackageKit"
 
-#: main.cpp:39
+#: main.cpp:38
 #, kde-format
 msgid "(C) 2010-2020 Harald Sitter"
 msgstr "(C) 2010-2020 Harald Sitter"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Harald Sitter"
 msgstr "Harald Sitter"
 
-#: main.cpp:47
+#: main.cpp:46
 #, kde-format
 msgctxt "command line description"
 msgid "Files to find debug packages for"
@@ -80,7 +80,7 @@ msgstr ""
 "antes que os símbolos de depuração possam ser resolvidos de forma confiável."
 "</p><p>Isto pode ser desfeito no Discover.</p>"
 
-#: qml/DebugRepoPage.qml:73
+#: qml/DebugRepoPage.qml:75
 msgctxt "@button"
 msgid "Add Missing Software Sources"
 msgstr "Adicionar fontes de software faltando"

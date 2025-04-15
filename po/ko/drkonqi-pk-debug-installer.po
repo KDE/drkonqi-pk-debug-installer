@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:39+0000\n"
+"POT-Creation-Date: 2025-04-15 01:56+0000\n"
 "PO-Revision-Date: 2021-05-20 00:41+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -34,28 +34,28 @@ msgid ""
 "Failed to find any suitable debug packages or they are all already installed."
 msgstr "적합한 디버그 패키지를 찾을 수 없거나 이미 설치되어 있습니다."
 
-#: main.cpp:35 qml/MainPage.qml:11
+#: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
 msgstr "디버그 기호 도우미"
 
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid "A debug package installer using PackageKit"
 msgstr "PackageKit을 사용하는 디버그 패키지 설치 도구"
 
-#: main.cpp:39
+#: main.cpp:38
 #, kde-format
 msgid "(C) 2010-2020 Harald Sitter"
 msgstr "(C) 2010-2020 Harald Sitter"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Harald Sitter"
 msgstr "Harald Sitter"
 
-#: main.cpp:47
+#: main.cpp:46
 #, kde-format
 msgctxt "command line description"
 msgid "Files to find debug packages for"
@@ -76,7 +76,7 @@ msgstr ""
 "<p>이 시스템에서 디버그 기호를 설치하려면 추가 소프트웨어 원본을 활성화해야  "
 "합니다.</p><p>이 작업은 Discover에서 취소 가능합니다.</p>"
 
-#: qml/DebugRepoPage.qml:73
+#: qml/DebugRepoPage.qml:75
 msgctxt "@button"
 msgid "Add Missing Software Sources"
 msgstr "빠진 소프트웨어 원본 추가"

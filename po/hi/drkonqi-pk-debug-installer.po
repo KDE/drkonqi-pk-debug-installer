@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:39+0000\n"
+"POT-Creation-Date: 2025-04-15 01:56+0000\n"
 "PO-Revision-Date: 2021-06-29 20:35+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -35,28 +35,28 @@ msgid ""
 "Failed to find any suitable debug packages or they are all already installed."
 msgstr "कोई उपयुक्त डीबग पैकेज ढूंढ़ने में असफल या फिर वे पहले से संस्थापित हैं।"
 
-#: main.cpp:35 qml/MainPage.qml:11
+#: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
 msgstr "डीबग संकेत सहायक"
 
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid "A debug package installer using PackageKit"
 msgstr "पैकेजकिट का प्रयोग करने वाला एक डीबग पैकेज संस्थापक"
 
-#: main.cpp:39
+#: main.cpp:38
 #, kde-format
 msgid "(C) 2010-2020 Harald Sitter"
 msgstr "(C) २०१०-२०२० हैराल्ड सिटर"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Harald Sitter"
 msgstr "हैराल्ड सिटर"
 
-#: main.cpp:47
+#: main.cpp:46
 #, kde-format
 msgctxt "command line description"
 msgid "Files to find debug packages for"
@@ -77,7 +77,7 @@ msgstr ""
 "<p>डीबग संकेतों का विश्वसनीयता से समाधान करने से पहले, इस तंत्र में अतिरिक्त सॉफ़्टवेयर "
 "स्त्रोत जोड़ने होंगे</p><p>इसको आप डिस्कवर में पूर्ववत कर सकते हैं।</p>"
 
-#: qml/DebugRepoPage.qml:73
+#: qml/DebugRepoPage.qml:75
 msgctxt "@button"
 msgid "Add Missing Software Sources"
 msgstr "अनुपस्थित सॉफ़्टवेयर स्त्रोतों को जोड़ें"

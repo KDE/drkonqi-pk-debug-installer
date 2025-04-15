@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:39+0000\n"
+"POT-Creation-Date: 2025-04-15 01:56+0000\n"
 "PO-Revision-Date: 2022-08-14 16:01+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -37,28 +37,28 @@ msgstr ""
 "Nu au fost găsite pachete potrivite pentru depanare sau toate sunt instalate "
 "deja."
 
-#: main.cpp:35 qml/MainPage.qml:11
+#: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
 msgstr "Ajutător pentru simboluri de depanare"
 
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid "A debug package installer using PackageKit"
 msgstr "Instalator pentru pachete de depanare folosind PackageKit"
 
-#: main.cpp:39
+#: main.cpp:38
 #, kde-format
 msgid "(C) 2010-2020 Harald Sitter"
 msgstr "(C) 2010-2020 Harald Sitter"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Harald Sitter"
 msgstr "Harald Sitter"
 
-#: main.cpp:47
+#: main.cpp:46
 #, kde-format
 msgctxt "command line description"
 msgid "Files to find debug packages for"
@@ -80,7 +80,7 @@ msgstr ""
 "ca simbolurile de depanare să poată fi rezolvate.</p><p>Aceasta se poate "
 "desface în Discover.</p>"
 
-#: qml/DebugRepoPage.qml:73
+#: qml/DebugRepoPage.qml:75
 msgctxt "@button"
 msgid "Add Missing Software Sources"
 msgstr "Adaugă surse de programe lipsă"

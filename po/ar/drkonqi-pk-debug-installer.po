@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:39+0000\n"
+"POT-Creation-Date: 2025-04-15 01:56+0000\n"
 "PO-Revision-Date: 2022-02-03 18:38+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -35,28 +35,28 @@ msgid ""
 msgstr ""
 "فشل في العثور على أي حزم رموز التنقيح مناسبة أو أنها كلها مثبتة بالفعل."
 
-#: main.cpp:35 qml/MainPage.qml:11
+#: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
 msgstr "مساعد رموز التنقيح"
 
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid "A debug package installer using PackageKit"
 msgstr "مثبت حزم التنقيح باستعمال PackageKit"
 
-#: main.cpp:39
+#: main.cpp:38
 #, kde-format
 msgid "(C) 2010-2020 Harald Sitter"
 msgstr "(C) 2010-2020 Harald Sitter"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Harald Sitter"
 msgstr "هارالد سِتِر"
 
-#: main.cpp:47
+#: main.cpp:46
 #, kde-format
 msgctxt "command line description"
 msgid "Files to find debug packages for"
@@ -77,7 +77,7 @@ msgstr ""
 "<p> يلزم تمكين مصادر البرامج الإضافية على هذا النظام قبل إيجاد رموز التنقيح "
 "بشكل موثوق. </p> <p> يمكن التراجع عن هذا في المستكشف.</p>"
 
-#: qml/DebugRepoPage.qml:73
+#: qml/DebugRepoPage.qml:75
 msgctxt "@button"
 msgid "Add Missing Software Sources"
 msgstr "أضف مصادر البرامج المفقودة"
