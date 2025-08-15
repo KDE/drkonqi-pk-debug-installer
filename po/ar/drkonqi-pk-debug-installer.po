@@ -32,8 +32,7 @@ msgstr "zayed.alsaidi@gmail.com"
 msgctxt "@label"
 msgid ""
 "Failed to find any suitable debug packages or they are all already installed."
-msgstr ""
-"فشل في العثور على أي حزم رموز التنقيح مناسبة أو أنها كلها مثبتة بالفعل."
+msgstr "فشل في العثور على أي حزم رموز التنقيح مناسبة أو أنها كلها مثبتة فعلًا."
 
 #: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
@@ -115,7 +114,7 @@ msgstr "الحالة:"
 #: qml/FilePage.qml:44
 msgctxt "info:status"
 msgid "Debug package already installed"
-msgstr "حزمة التنقيح مثبتة بالفعل"
+msgstr "حزمة التنقيح مثبتة فعلًا"
 
 #: qml/FilePage.qml:45
 msgctxt "info:status"
