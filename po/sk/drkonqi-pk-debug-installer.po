@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: drkonqi-pk-debug-installer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:01+0000\n"
-"PO-Revision-Date: 2021-11-21 11:30+0100\n"
+"PO-Revision-Date: 2026-04-10 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,17 +31,19 @@ msgctxt "@label"
 msgid ""
 "Failed to find any suitable debug packages or they are all already installed."
 msgstr ""
+"Nepodarilo sa nájsť žiadne vhodné ladíacie balíky alebo sú všetky už "
+"nainštalované."
 
 #: main.cpp:34 qml/MainPage.qml:11
 #, kde-format
 msgctxt "@title"
 msgid "Debug Symbols Helper"
-msgstr ""
+msgstr "Pomocník ladíacich symbolov"
 
 #: main.cpp:36
 #, kde-format
 msgid "A debug package installer using PackageKit"
-msgstr ""
+msgstr "Inštalátor ladíacich balíkov pomocou PackageKit"
 
 #: main.cpp:38
 #, kde-format
@@ -62,7 +64,7 @@ msgstr "Súbory na nájdenie balíkov ladenia pre"
 #: qml/DebugRepoPage.qml:12
 msgctxt "@title"
 msgid "Debug Symbols Sources"
-msgstr ""
+msgstr "Zdroje ladíacich symbolov"
 
 #: qml/DebugRepoPage.qml:37
 msgctxt "@label/rich"
@@ -71,11 +73,14 @@ msgid ""
 "debug symbols can be reliably resolved.</p><p>This can be undone in Discover."
 "</p>"
 msgstr ""
+"<p>Na tomto systéme je potrebné povoliť dodatočné zdroje softvéru, aby bolo "
+"možné spoľahlivo rozlíšiť ladíacie symboly.</p><p>Toto je možné vrátiť späť "
+"v Discover.</p>"
 
 #: qml/DebugRepoPage.qml:75
 msgctxt "@button"
 msgid "Add Missing Software Sources"
-msgstr ""
+msgstr "Pridať chýbajúce zdroje softvéru"
 
 #: qml/ErrorPage.qml:12
 msgctxt "@title"
@@ -85,12 +90,12 @@ msgstr "Chyba"
 #: qml/ErrorPage.qml:29
 msgctxt "@info"
 msgid "An error occurred during installation: %1"
-msgstr ""
+msgstr "Počas inštalácie sa vyskytla chyba: %1"
 
 #: qml/FilePage.qml:22
 msgctxt "@label"
 msgid "PackageKit ID:"
-msgstr ""
+msgstr "PackageKit ID:"
 
 #: qml/FilePage.qml:28
 msgctxt "@label"
@@ -100,7 +105,7 @@ msgstr "Zdrojový balík: "
 #: qml/FilePage.qml:34
 msgctxt "@label"
 msgid "Debug PackageKit ID:"
-msgstr ""
+msgstr "Ladiace PackageKit ID:"
 
 #: qml/FilePage.qml:40
 msgctxt "@label package installation status"
@@ -110,17 +115,17 @@ msgstr "Stav:"
 #: qml/FilePage.qml:44
 msgctxt "info:status"
 msgid "Debug package already installed"
-msgstr ""
+msgstr "Ladiaci balík je už nainštalovaný"
 
 #: qml/FilePage.qml:45
 msgctxt "info:status"
 msgid "Debug package not yet installed"
-msgstr ""
+msgstr "Ladiaci balík ešte nie je nainštalovaný"
 
 #: qml/FilePropertyLabel.qml:18
 msgctxt "@info error"
 msgid "Failed to resolve data!"
-msgstr ""
+msgstr "Nepodarilo sa rozlíšiť dáta!"
 
 #: qml/FilePropertyLabel.qml:20
 msgctxt "@info place holder while waiting for actual data to load"
@@ -130,7 +135,7 @@ msgstr "..."
 #: qml/main.qml:13
 msgctxt "@title:window"
 msgid "Debug Symbols Installer"
-msgstr ""
+msgstr "Inštalátor ladíacich symbolov"
 
 #: qml/MainPage.qml:21
 msgctxt "@action:button all = debug symbols for which packages are available"
