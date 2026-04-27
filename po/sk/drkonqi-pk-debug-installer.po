@@ -31,7 +31,7 @@ msgctxt "@label"
 msgid ""
 "Failed to find any suitable debug packages or they are all already installed."
 msgstr ""
-"Nepodarilo sa nájsť žiadne vhodné ladíacie balíky alebo sú všetky už "
+"Nepodarilo sa nájsť žiadne vhodné ladiace balíky alebo sú všetky už "
 "nainštalované."
 
 #: main.cpp:34 qml/MainPage.qml:11
@@ -74,8 +74,8 @@ msgid ""
 "</p>"
 msgstr ""
 "<p>Na tomto systéme je potrebné povoliť dodatočné zdroje softvéru, aby bolo "
-"možné spoľahlivo rozlíšiť ladíacie symboly.</p><p>Toto je možné vrátiť späť "
-"v Discover.</p>"
+"možné spoľahlivo rozlíšiť ladiace symboly.</p><p>Toto je možné vrátiť späť v "
+"Discover.</p>"
 
 #: qml/DebugRepoPage.qml:75
 msgctxt "@button"
