@@ -130,7 +130,7 @@ msgstr "El paquet de depuració encara no està instal·lat"
 #: qml/FilePropertyLabel.qml:18
 msgctxt "@info error"
 msgid "Failed to resolve data!"
-msgstr "No s'ha pogut resoldre les dades!"
+msgstr "No s'han pogut resoldre les dades!"
 
 #: qml/FilePropertyLabel.qml:20
 msgctxt "@info place holder while waiting for actual data to load"
